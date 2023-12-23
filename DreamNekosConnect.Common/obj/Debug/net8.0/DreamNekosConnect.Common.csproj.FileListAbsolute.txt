@@ -1,0 +1,11 @@
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Common\bin\Debug\net8.0\DreamNekosConnect.Common.deps.json
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Common\bin\Debug\net8.0\DreamNekosConnect.Common.dll
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Common\bin\Debug\net8.0\DreamNekosConnect.Common.pdb
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Common\obj\Debug\net8.0\DreamNekosConnect.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Common\obj\Debug\net8.0\DreamNekosConnect.Common.AssemblyInfoInputs.cache
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Common\obj\Debug\net8.0\DreamNekosConnect.Common.AssemblyInfo.cs
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Common\obj\Debug\net8.0\DreamNekosConnect.Common.csproj.CoreCompileInputs.cache
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Common\obj\Debug\net8.0\DreamNekosConnect.Common.dll
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Common\obj\Debug\net8.0\refint\DreamNekosConnect.Common.dll
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Common\obj\Debug\net8.0\DreamNekosConnect.Common.pdb
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Common\obj\Debug\net8.0\ref\DreamNekosConnect.Common.dll

@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34031.279
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DreamNekosConnect.Lib", "DreamNekosConnect.Lib\DreamNekosConnect.Lib.csproj", "{9912A597-AA4A-44CD-AD07-336042BB3BA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamNekos.API", "DreamNekos.API\DreamNekos.API.csproj", "{A8F5142D-0C22-4760-8D44-534922645A55}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DreamNekosConnect.Common", "DreamNekosConnect.Common\DreamNekosConnect.Common.csproj", "{B58D796F-CFEB-4920-AE36-610CDF0F34EF}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{38944D3B-C135-471C-BDAD-F5BBC6BEE0D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9912A597-AA4A-44CD-AD07-336042BB3BA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9912A597-AA4A-44CD-AD07-336042BB3BA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9912A597-AA4A-44CD-AD07-336042BB3BA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9912A597-AA4A-44CD-AD07-336042BB3BA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8F5142D-0C22-4760-8D44-534922645A55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8F5142D-0C22-4760-8D44-534922645A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8F5142D-0C22-4760-8D44-534922645A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8F5142D-0C22-4760-8D44-534922645A55}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B58D796F-CFEB-4920-AE36-610CDF0F34EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B58D796F-CFEB-4920-AE36-610CDF0F34EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B58D796F-CFEB-4920-AE36-610CDF0F34EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B58D796F-CFEB-4920-AE36-610CDF0F34EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38944D3B-C135-471C-BDAD-F5BBC6BEE0D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38944D3B-C135-471C-BDAD-F5BBC6BEE0D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38944D3B-C135-471C-BDAD-F5BBC6BEE0D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38944D3B-C135-471C-BDAD-F5BBC6BEE0D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3B4EE7F6-A4F0-453E-8CA6-79A632C314D0}
+	EndGlobalSection
+EndGlobal

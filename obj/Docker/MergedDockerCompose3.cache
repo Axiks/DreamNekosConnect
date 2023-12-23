@@ -1,0 +1,60 @@
+name: dockercompose2311374614063009025
+services:
+  dreamnekos.api:
+    build:
+      context: C:\Users\artwa\source\repos\DreamNekosConnect.Lib
+      dockerfile: DreamNekos.API/Dockerfile
+    depends_on:
+      postgres_db:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_HTTP_PORTS: "8080"
+    image: dreamnekosapi
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 8080
+        protocol: tcp
+  postgres_db:
+    environment:
+      POSTGRES_DB: dreamneko_db
+      POSTGRES_PASSWORD: megapassVanill
+      POSTGRES_USER: vanila
+    image: postgres:latest
+    networks:
+      default: null
+    ports:
+      - mode: ingress
+        target: 5432
+        published: "5432"
+        protocol: tcp
+    restart: always
+    volumes:
+      - type: volume
+        source: pgdata
+        target: /var/lib/postgresql/data
+        volume: {}
+      - type: volume
+        source: pgconf
+        target: /etc/postgresql
+        volume: {}
+      - type: volume
+        source: pglog
+        target: /var/log/postgresql
+        volume: {}
+networks:
+  default:
+    name: dockercompose2311374614063009025_default
+volumes:
+  pgconf:
+    name: dockercompose2311374614063009025_pgconf
+    driver: local
+  pgdata:
+    name: dockercompose2311374614063009025_pgdata
+    driver: local
+  pglog:
+    name: dockercompose2311374614063009025_pglog
+    driver: local

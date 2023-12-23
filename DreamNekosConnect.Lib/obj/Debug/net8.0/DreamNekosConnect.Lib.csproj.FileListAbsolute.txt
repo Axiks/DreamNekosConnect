@@ -1,0 +1,17 @@
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\obj\Debug\net8.0\DreamNekosConnect.Lib.csproj.AssemblyReference.cache
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\obj\Debug\net8.0\DreamNekosConnect.Lib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\obj\Debug\net8.0\DreamNekosConnect.Lib.AssemblyInfoInputs.cache
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\obj\Debug\net8.0\DreamNekosConnect.Lib.AssemblyInfo.cs
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\obj\Debug\net8.0\DreamNekosConnect.Lib.csproj.CoreCompileInputs.cache
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\bin\Debug\net8.0\DreamNekosConnect.Lib.deps.json
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\bin\Debug\net8.0\DreamNekosConnect.Lib.runtimeconfig.json
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\bin\Debug\net8.0\DreamNekosConnect.Lib.dll
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\bin\Debug\net8.0\DreamNekosConnect.Lib.pdb
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\bin\Debug\net8.0\DreamNekosConnect.Common.dll
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\bin\Debug\net8.0\DreamNekosConnect.Common.pdb
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\obj\Debug\net8.0\DreamNekosConnect.Lib.csproj.CopyComplete
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\obj\Debug\net8.0\DreamNekosConnect.Lib.dll
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\obj\Debug\net8.0\refint\DreamNekosConnect.Lib.dll
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\obj\Debug\net8.0\DreamNekosConnect.Lib.pdb
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\obj\Debug\net8.0\DreamNekosConnect.Lib.genruntimeconfig.cache
+C:\Users\artwa\source\repos\DreamNekosConnect.Lib\DreamNekosConnect.Lib\obj\Debug\net8.0\ref\DreamNekosConnect.Lib.dll
