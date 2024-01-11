@@ -1,4 +1,5 @@
-﻿using DreamNekos.API.Request.InterestType;
+﻿using DreamNekos.API.Helpers;
+using DreamNekos.API.Request.InterestType;
 using DreamNekos.API.Response.InterestType;
 using DreamNekosConnect.Lib.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -17,8 +18,10 @@ namespace DreamNekos.API.Controllers
         {
             _interestTypeService = interestTypeService;
         }
+
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<InterestTypeResponse>))]
         [HttpGet]
+        [ApiKey]
         public IActionResult IndexInterestType() {
             List<InterestTypeResponse> interestTypeResponses = new List<InterestTypeResponse>();
             var  result = _interestTypeService.GetAllInterestType();

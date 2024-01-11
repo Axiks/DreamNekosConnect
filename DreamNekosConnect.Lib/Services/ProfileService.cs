@@ -8,10 +8,9 @@ namespace DreamNekosConnect.Lib.Services
     public class ProfileService
     {
         private ApplicationDbContext _dbContext { get; set; }
-        public ProfileService()
+        public ProfileService(ApplicationDbContext applicationDbContext)
         {
-            var dbProvider = DbProvider.GetInstance();
-            _dbContext = dbProvider.GetDbContext();
+            _dbContext = applicationDbContext;
         }
         public UserEntity CreateProfile(int tgId, string name, string? about)
         {

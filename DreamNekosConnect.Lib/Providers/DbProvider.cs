@@ -9,7 +9,7 @@ namespace DreamNekosConnect.Lib.Providers
         private static ApplicationDbContext _context;
         private DbProvider() {
             DbConnectEnv DbConnectEnv = new DbConnectEnv { Host = "my_host", Database = "dreamneko_db", Username = "vanila", Password = "megapassVanill" };
-            _context = new ApplicationDbContext(DbConnectEnv);
+            //_context = new ApplicationDbContext(DbConnectEnv);
             _context.Database.EnsureCreated();
             _context.Database.Migrate();
         }
@@ -21,6 +21,9 @@ namespace DreamNekosConnect.Lib.Providers
             }
             return _instance;
         }
-        public ApplicationDbContext GetDbContext() => _context;
+        public ApplicationDbContext GetDbContext()
+        {
+            return _context;
+        }
     }
 }

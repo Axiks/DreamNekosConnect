@@ -7,22 +7,11 @@ namespace DreamNekosConnect.Lib
 {
     public class ApplicationDbContext : DbContext
     {
-        //public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
-        private DbConnectEnv _dbConnectEnv;
-        public ApplicationDbContext(DbConnectEnv DbConnectEnv)
-        {
-            _dbConnectEnv = DbConnectEnv;
-        }
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
         public virtual DbSet<UserEntity> Users { get; set; }
         public virtual DbSet<InterestEntity> Interests { get; set; }
         public virtual DbSet<InterestTypeEntity> InterestType { get; set; }
         public virtual DbSet<UserInterestEntity> UserInterest { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var connectStr = $"Server=postgres_db;Database={_dbConnectEnv.Database};Username={_dbConnectEnv.Username};Password={_dbConnectEnv.Password}";
-            optionsBuilder.UseNpgsql(connectStr);
-        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserEntity>()

@@ -7,10 +7,9 @@ namespace DreamNekosConnect.Lib.Services
     public class InterestTypeService
     {
         private ApplicationDbContext _dbContext { get; set; }
-        public InterestTypeService()
+        public InterestTypeService(ApplicationDbContext applicationDbContext)
         {
-            var dbProvider = DbProvider.GetInstance();
-            _dbContext = dbProvider.GetDbContext();
+            _dbContext = applicationDbContext;
         }
         public InterestTypeEntity CreateInterestType(string name)
         {

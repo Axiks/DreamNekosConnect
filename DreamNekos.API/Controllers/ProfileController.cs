@@ -4,6 +4,7 @@ using DreamNekos.API.Request.Profile.Interest;
 using DreamNekos.API.Response.Interest;
 using DreamNekos.API.Response.Link;
 using DreamNekos.API.Response.Profile;
+using DreamNekosConnect.Lib;
 using DreamNekosConnect.Lib.Services;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -17,9 +18,9 @@ namespace DreamNekos.API.Controllers
     {
         private ProfileService _profileService;
         private readonly IMapper _mapper;
-        public ProfileController(IMapper mapper)
+        public ProfileController(IMapper mapper, ApplicationDbContext applicationDbContext)
         {
-            _profileService = new ProfileService();
+            _profileService = new ProfileService(applicationDbContext);
             _mapper = mapper;
         }
 
