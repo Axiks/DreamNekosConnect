@@ -1,5 +1,6 @@
 using DreamNekos.API.Helpers;
 using DreamNekos.API.Mapper.Profiles;
+using DreamNekos.Core.Services;
 using DreamNekosConnect.Lib;
 using DreamNekosConnect.Lib.Services;
 using Microsoft.EntityFrameworkCore;
@@ -37,6 +38,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ProfileService>();
 builder.Services.AddScoped<InterestService>();
 builder.Services.AddScoped<InterestTypeService>();
+builder.Services.AddScoped<SeederService>();
 
 builder.Services.AddAutoMapper(typeof(ProfileMapProfile));
 
