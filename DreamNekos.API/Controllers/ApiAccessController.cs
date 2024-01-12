@@ -38,7 +38,7 @@ namespace DreamNekos.API.Controllers
                 _config["Jwt:Issuer"],
                 _config["Jwt:Audience"],
                 claims,
-                expires: DateTime.Now.AddMinutes(120),
+                expires: DateTime.Now.AddMinutes(60*30*12),
                 signingCredentials: credentials);
 
             var response = new TokenResponse { Token = new JwtSecurityTokenHandler().WriteToken(token) };
