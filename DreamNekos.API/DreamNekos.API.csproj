@@ -31,7 +31,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\DreamNekosConnect.Common\DreamNekosConnect.Common.csproj" />
-    <ProjectReference Include="..\DreamNekosConnect.Lib\DreamNekosConnect.Lib.csproj" />
+    <ProjectReference Include="..\DreamNekosConnect.Lib\DreamNekos.Core.csproj" />
   </ItemGroup>
 
 </Project>
