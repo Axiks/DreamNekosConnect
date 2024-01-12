@@ -1,5 +1,5 @@
-﻿using DreamNekosConnect.Lib.Entities;
-using DreamNekosConnect.Lib.Providers;
+﻿using DreamNekos.API.Helpers;
+using DreamNekosConnect.Lib.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DreamNekosConnect.Lib.Services
@@ -23,6 +23,7 @@ namespace DreamNekosConnect.Lib.Services
             var interestType = _dbContext.InterestType
                 .Include(x => x.Interests)
                 .FirstOrDefault(x => x.Id == interestId);
+            if (interestType == null) throw new ElementNotFoundException("A interest type with such an ID does not exist.");
             return interestType;
         }
         public List<InterestTypeEntity> GetAllInterestType()
@@ -33,6 +34,7 @@ namespace DreamNekosConnect.Lib.Services
         public InterestTypeEntity UpdateInterestType(Guid interestId, string? name)
         {
             var interestType = _dbContext.InterestType.FirstOrDefault(x => x.Id == interestId);
+            if (interestType == null) throw new ElementNotFoundException("A interest type with such an ID does not exist.");
             if (name != null) interestType.Name = name;
             _dbContext.SaveChanges();
             return interestType;
@@ -40,6 +42,7 @@ namespace DreamNekosConnect.Lib.Services
         public void DeleteInterestType(Guid interestId)
         {
             var interestType = _dbContext.InterestType.FirstOrDefault(x => x.Id == interestId);
+            if (interestType == null) throw new ElementNotFoundException("A interest type with such an ID does not exist.");
             _dbContext.Remove(interestType);
             _dbContext.SaveChanges();
         }

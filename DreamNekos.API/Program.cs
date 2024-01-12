@@ -1,21 +1,20 @@
 using DreamNekos.API.Helpers;
 using DreamNekos.API.Mapper.Profiles;
 using DreamNekosConnect.Lib;
-using DreamNekosConnect.Lib.Models;
-using DreamNekosConnect.Lib.Providers;
 using DreamNekosConnect.Lib.Services;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using System;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", builder =>
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader());
+});
 
 builder.Services.AddControllers()
     .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
@@ -48,9 +47,18 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.UseExceptionHandler("/error-development");
 }
 
-app.UseAuthorization();
+if (!app.Environment.IsDevelopment())
+{
+    app.UseExceptionHandler("/error");
+}
+
+app.UseCors("AllowAll");
+
+//app.UseAuthorization();
 //app.MapIdentityApi<IdentityUser>();
 
 app.MapControllers();

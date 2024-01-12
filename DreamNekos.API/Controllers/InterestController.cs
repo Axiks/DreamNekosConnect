@@ -1,4 +1,5 @@
-﻿using DreamNekos.API.Request.Interest;
+﻿using DreamNekos.API.Helpers;
+using DreamNekos.API.Request.Interest;
 using DreamNekos.API.Response.Interest;
 using DreamNekos.API.Response.InterestType;
 using DreamNekosConnect.Lib.Services;
@@ -38,8 +39,10 @@ namespace DreamNekos.API.Controllers
             return Ok(interestListResponse);
         }
 
+        [ApiKey]
         [HttpPost]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(InterestResponse))]
+        [SwaggerResponse((int)HttpStatusCode.Unauthorized)]
         public IActionResult CreateInterest(CreateInterestRequest createInterestRequest)
         {
             var newInterest = _interestService.CreateInterest(createInterestRequest.Name, createInterestRequest.InterestTypeId);
@@ -48,8 +51,12 @@ namespace DreamNekos.API.Controllers
             var response = new InterestResponse { InterestId = newInterest.Id, InterestType = newInterestType, Name = newInterest.Name };
             return Ok(response);
         }
+
+        [ApiKey]
         [HttpPut("{interestId}")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(InterestResponse))]
+        [SwaggerResponse((int)HttpStatusCode.Unauthorized)]
+        [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult EditInterest(Guid interestId, UpdateInterestRequest updateInterestRequest)
         {
             var updatedInterst = _interestService.UpdateInterest(interestId, updateInterestRequest.Name, updateInterestRequest.InterestTypeId);
@@ -58,7 +65,11 @@ namespace DreamNekos.API.Controllers
             //GetInterestResponse
             return Ok(response);
         }
+
+        [ApiKey]
         [HttpDelete("{interestId}")]
+        [SwaggerResponse((int)HttpStatusCode.Unauthorized)]
+        [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult DeleteInterest(Guid interestId)
         {
             return Ok();
