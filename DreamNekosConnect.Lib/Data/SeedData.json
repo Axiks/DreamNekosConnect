@@ -1,0 +1,384 @@
+﻿{
+  "Interests": [
+    [
+      "c",
+      "programming language"
+    ],
+    [
+      "c++",
+      "programming language"
+    ],
+    [
+      "c#",
+      "programming language"
+    ],
+    [
+      "java",
+      "programming language"
+    ],
+    [
+      "python",
+      "programming language"
+    ],
+    [
+      "visual basic .net",
+      "programming language"
+    ],
+    [
+      "JavaScript",
+      "programming language"
+    ],
+    [
+      "Assembly language",
+      "programming language"
+    ],
+    [
+      "php",
+      "programming language"
+    ],
+    [
+      "r",
+      "programming language"
+    ],
+    [
+      "go",
+      "programming language"
+    ],
+    [
+      "clasic visual basic",
+      "programming language"
+    ],
+    [
+      "swift",
+      "programming language"
+    ],
+    [
+      "delphi",
+      "programming language"
+    ],
+    [
+      "ruby",
+      "programming language"
+    ],
+    [
+      "perl",
+      "programming language"
+    ],
+    [
+      "objective-c",
+      "programming language"
+    ],
+    [
+      "rust",
+      "programming language"
+    ],
+    [
+      "scratch",
+      "programming language"
+    ],
+    [
+      "sas",
+      "programming language"
+    ],
+    [
+      "kotlin",
+      "programming language"
+    ],
+    [
+      "julia",
+      "programming language"
+    ],
+    [
+      "lua",
+      "programming language"
+    ],
+    [
+      "fortran",
+      "programming language"
+    ],
+    [
+      "cobol",
+      "programming language"
+    ],
+    [
+      "lisp",
+      "programming language"
+    ],
+    [
+      "foxpro",
+      "programming language"
+    ],
+    [
+      "ada",
+      "programming language"
+    ],
+    [
+      "dart",
+      "programming language"
+    ],
+    [
+      "scala",
+      "programming language"
+    ],
+    [
+      "prolog",
+      "programming language"
+    ],
+    [
+      "d",
+      "programming language"
+    ],
+    [
+      "haskell",
+      "programming language"
+    ],
+    [
+      "mysql",
+      "database"
+    ],
+    [
+      "redis",
+      "database"
+    ],
+    [
+      "couchdb",
+      "database"
+    ],
+    [
+      "oracle",
+      "database"
+    ],
+    [
+      "mongodb",
+      "database"
+    ],
+    [
+      "postgresql",
+      "database"
+    ],
+    [
+      "sqlite",
+      "database"
+    ],
+    [
+      "firebase",
+      "database"
+    ],
+    [
+      "cassandra",
+      "database"
+    ],
+    [
+      "reactjs",
+      "technologies"
+    ],
+    [
+      "nodejs",
+      "technologies"
+    ],
+    [
+      "angular",
+      "technologies"
+    ],
+    [
+      "vuejs",
+      "technologies"
+    ],
+    [
+      "emberjs",
+      "technologies"
+    ],
+    [
+      "groovy",
+      "technologies"
+    ],
+    [
+      "laravel",
+      "technologies"
+    ],
+    [
+      ".net core",
+      "technologies"
+    ],
+    [
+      "flutter",
+      "technologies"
+    ],
+    [
+      "android",
+      "technologies"
+    ],
+    [
+      "ios",
+      "technologies"
+    ],
+    [
+      "xamarin",
+      "technologies"
+    ],
+    [
+      "reactnative",
+      "technologies"
+    ],
+    [
+      "qt",
+      "technologies"
+    ],
+    [
+      "ionic",
+      "technologies"
+    ],
+    [
+      "cordova",
+      "technologies"
+    ],
+    [
+      "anime",
+      "hobby"
+    ],
+    [
+      "manga",
+      "hobby"
+    ],
+    [
+      "acting",
+      "hobby"
+    ],
+    [
+      "art collecting",
+      "hobby"
+    ],
+    [
+      "calligraphy",
+      "hobby"
+    ],
+    [
+      "dancing",
+      "hobby"
+    ],
+    [
+      "drawing",
+      "hobby"
+    ],
+    [
+      "metalworking",
+      "hobby"
+    ],
+    [
+      "origami",
+      "hobby"
+    ],
+    [
+      "photography",
+      "hobby"
+    ],
+    [
+      "podcasting",
+      "hobby"
+    ],
+    [
+      "record collecting",
+      "hobby"
+    ],
+    [
+      "writing",
+      "hobby"
+    ],
+    [
+      "baking",
+      "hobby"
+    ],
+    [
+      "cooking",
+      "hobby"
+    ],
+    [
+      "board games",
+      "hobby"
+    ],
+    [
+      "chess",
+      "hobby"
+    ],
+    [
+      "lego sets",
+      "hobby"
+    ],
+    [
+      "paintball",
+      "hobby"
+    ],
+    [
+      "video games",
+      "hobby"
+    ],
+    [
+      "book collecting",
+      "hobby"
+    ],
+    [
+      "karaoke",
+      "hobby"
+    ],
+    [
+      "reading",
+      "hobby"
+    ],
+    [
+      "museum visiting",
+      "hobby"
+    ],
+    [
+      "astronomy",
+      "hobby"
+    ],
+    [
+      "camping",
+      "hobby"
+    ],
+    [
+      "drones",
+      "hobby"
+    ],
+    [
+      "fishing",
+      "hobby"
+    ],
+    [
+      "launching rockets",
+      "hobby"
+    ],
+    [
+      "traveling",
+      "hobby"
+    ],
+    [
+      "app making",
+      "hobby"
+    ],
+    [
+      "electronics repair",
+      "hobby"
+    ],
+    [
+      "hacking",
+      "hobby"
+    ],
+    [
+      "video production",
+      "hobby"
+    ],
+    [
+      "rock climbing",
+      "hobby"
+    ],
+    [
+      "swimming",
+      "hobby"
+    ],
+    [
+      "pet fostering",
+      "hobby"
+    ],
+  ]
+}
