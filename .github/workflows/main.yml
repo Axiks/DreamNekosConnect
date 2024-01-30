@@ -9,8 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Deploy to Docker swarm
-      uses: sulthonzh/docker-remote-deployment-action@v1
+    - name: Docker Remote Deployment
+      uses: sulthonzh/docker-remote-deployment-action@v0.1.2-beta     
       with:
         remote_docker_host: "${{ secrets.DEPLOY_USERNAME }}@${{ secrets.DEPLOY_HOST }}"
         ssh_private_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
