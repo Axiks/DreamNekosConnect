@@ -7,16 +7,14 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-    - name: Docker Remote Deployment      
-      uses: sulthonzh/docker-remote-deployment-action@v0.1.2-beta
+    - uses: actions/checkout@v2
+
+    - uses: alex-ac/github-action-ssh-docker-compose@master
+      name: Docker-Compose Remote Deployment
       with:
-        remote_docker_host: ${{ secrets.DEPLOY_HOST }}
+        ssh_host: ${{ secrets.DEPLOY_HOST }}
         ssh_private_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-        ssh_public_key: ${{ secrets.DEPLOY_PUBLIC_KEY }}
-        deployment_mode: docker-swarm
-        copy_stack_file: true
-        deploy_path: ~/Dockers
-        stack_file_name: docker-compose.yaml
-        keep_files: 5
-        args: my_applicaion
+        ssh_user: ${{ secrets.DEPLOY_USERNAME }}
+        docker_compose_prefix: dream_nekos_connect
