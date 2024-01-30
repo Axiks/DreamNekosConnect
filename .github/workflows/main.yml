@@ -8,12 +8,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-    - uses: astappiev/docker-compose-remote-action@master
-      name: Docker-Compose Remote Deployment
+    - name: Deploy to Docker swarm
+      uses: sulthonzh/docker-remote-deployment-action@v1
       with:
-        ssh_host: ${{ secrets.DEPLOY_HOST }}
-        ssh_user: ${{ secrets.DEPLOY_USERNAME }}
+        remote_docker_host: ${{ secrets.DEPLOY_HOST }}
         ssh_private_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-        ssh_host_public_key: ${{ secrets.DEPLOY_PUBLIC_KEY }}
-        docker_compose_prefix: mydreamnekosconnectapp
+        ssh_public_key: ${{ secrets.DEPLOY_PUBLIC_KEY }}
+        deployment_mode: docker-swarm
+        copy_stack_file: true
+        deploy_path: ~/Dockers
+        stack_file_name: docker-compose.yaml
+        keep_files: 5
+        args: my_applicaion
