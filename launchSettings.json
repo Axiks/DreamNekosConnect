@@ -5,6 +5,12 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "dreamnekos.api": "StartDebugging"
+      },
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DB_NAME": "dreamneko_db",
+        "DB_USERNAME": "vanila",
+        "DB_PASSWORD": "megapassVanill"
       }
     }
   }
