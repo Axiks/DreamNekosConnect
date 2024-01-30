@@ -6,6 +6,7 @@ namespace DreamNekos.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class SeedDataController : ControllerBase
     {
         private readonly SeederService _seeder;
