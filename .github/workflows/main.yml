@@ -9,10 +9,15 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: executing remote ssh commands using ssh key
-      uses: appleboy/ssh-action@v1.0.3
+    - name: Deploy to Docker swarm
+      uses: sulthonzh/docker-remote-deployment-action@v1
       with:
-        host: ${{ secrets.DEPLOY_HOST }}
-        username: ${{ secrets.DEPLOY_USERNAME }}
-        key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-        script: whoami
+        remote_docker_host: "${{ secrets.DEPLOY_USERNAME }}@${{ secrets.DEPLOY_HOST }}"
+        ssh_private_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+        ssh_public_key: ${{ secrets.DEPLOY_PUBLIC_KEY }}
+        deployment_mode: docker-swarm
+        copy_stack_file: true
+        deploy_path: ~/Dockers
+        stack_file_name: docker-compose.yaml
+        keep_files: 5
+        args: whoami
