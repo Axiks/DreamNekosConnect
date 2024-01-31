@@ -17,11 +17,12 @@ jobs:
          DB_USERNAME:  ${{ secrets.APP_DB_USER }}
          DB_PASSWORD:  ${{ secrets.APP_DB_PASSWORD }}
          PROJECT_NAME: dream-nekos-connect
+         APP_CONTAINER_PORT: ${{ secrets.APP_CONTAINER_PORT }}
       with:
         host: ${{ secrets.DEPLOY_HOST }}
         username: ${{ secrets.DEPLOY_USERNAME }}
         key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-        envs: REPOSITORY_NAME, REPOSITORY_NAME_FULL, DB_NAME, DB_USERNAME, DB_PASSWORD, PROJECT_NAME
+        envs: REPOSITORY_NAME, REPOSITORY_NAME_FULL, DB_NAME, DB_USERNAME, DB_PASSWORD, PROJECT_NAME, APP_CONTAINER_PORT
         script:  |
           cd ~/Dockers/githubaction
           FOLDER_NAME=$(basename "$REPOSITORY_NAME")
