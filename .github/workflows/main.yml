@@ -22,7 +22,8 @@ jobs:
         #   git clone git@github.com:$REPOSITORY_NAME
         script:  |
           cd ~/Dockers/githubaction
-          if [ "$(basename "$REPOSITORY_NAME")" ]; then
-            rm -f -r "$(basename "$REPOSITORY_NAME")"
+          FOLDER_NAME=$(basename "$REPOSITORY_NAME")
+          if [ -d "$FOLDER_NAME" ]; then
+            rm -rf "$FOLDER_NAME"
           else
             git clone git@github.com:$REPOSITORY_NAME
