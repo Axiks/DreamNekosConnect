@@ -11,7 +11,7 @@ jobs:
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@v1.0.3
       env: 
-         REPOSITORY_NAME: ${{ github.env.GITHUB_REPOSITORY }}.git
+         REPOSITORY_NAME: ${{ env.GITHUB_REPOSITORY }}.git
       with:
         host: ${{ secrets.DEPLOY_HOST }}
         username: ${{ secrets.DEPLOY_USERNAME }}
