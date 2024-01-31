@@ -63,6 +63,13 @@ app.UseCors("AllowAll");
 //app.UseAuthorization();
 //app.MapIdentityApi<IdentityUser>();
 
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    dbContext.Database.EnsureCreated();
+    dbContext.Database.Migrate();
+}
+
 app.MapControllers();
 
 app.Run();
