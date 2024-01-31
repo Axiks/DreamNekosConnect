@@ -7,14 +7,15 @@ on:
 jobs:
    build-and-push-image:
     runs-on: ubuntu-latest
-
     steps:
     - name: executing remote ssh commands using ssh key
       uses: appleboy/ssh-action@v1.0.3
+      env: 
+         REPOSITORY_NAME: ${{ github.env.GITHUB_REPOSITORY }}.git
       with:
         host: ${{ secrets.DEPLOY_HOST }}
         username: ${{ secrets.DEPLOY_USERNAME }}
         key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
         script:  |
           cd ~/Dockers/githubaction
-          git clone git@github.com:${{ github.env.GITHUB_REPOSITORY }}.git
+          git clone git@github.com:$REPOSITORY_NAME
