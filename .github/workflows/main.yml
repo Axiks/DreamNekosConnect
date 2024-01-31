@@ -16,11 +16,12 @@ jobs:
          DB_NAME: ${{ secrets.APP_DB_NAME }}
          POSTGRES_USER:  ${{ secrets.APP_DB_USER }}
          POSTGRES_PASSWORD:  ${{ secrets.APP_PASSWORD }}
+         PROJECT_NAME: dream-nekos-connect
       with:
         host: ${{ secrets.DEPLOY_HOST }}
         username: ${{ secrets.DEPLOY_USERNAME }}
         key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-        envs: REPOSITORY_NAME, REPOSITORY_NAME_FULL, DB_NAME, POSTGRES_USER, POSTGRES_PASSWORD
+        envs: REPOSITORY_NAME, REPOSITORY_NAME_FULL, DB_NAME, POSTGRES_USER, POSTGRES_PASSWORD, PROJECT_NAME
         script:  |
           cd ~/Dockers/githubaction
           FOLDER_NAME=$(basename "$REPOSITORY_NAME")
@@ -34,5 +35,5 @@ jobs:
           cd $FOLDER_NAME
           git pull
           echo "Updated!"
-          docker compose up --project-name dream-nekos-connect
+          docker compose -p $PROJECT_NAME up --force-recreate
           echo "Container run!"
