@@ -17,4 +17,4 @@ jobs:
         key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
         script:  |
           cd ~/Dockers/githubaction
-          git clone git@github.com:${{ env.GITHUB_REPOSITORY }}.git
+          git clone git@github.com:${{ github.env.GITHUB_REPOSITORY }}.git
