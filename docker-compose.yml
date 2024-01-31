@@ -3,6 +3,8 @@ version: '3.4'
 services:
   dreamnekos.api:
     image: ${DOCKER_REGISTRY-}dreamnekosapi
+    ports:
+      - "${APP_CONTAINER_PORT}:8080"
     depends_on:
         - "postgres_db"
     build:
