@@ -18,6 +18,7 @@ jobs:
          DB_PASSWORD:  ${{ secrets.APP_DB_PASSWORD }}
          PROJECT_NAME: dream-nekos-connect
       with:
+        host: ${{ secrets.DEPLOY_HOST }}
         username: ${{ secrets.DEPLOY_USERNAME }}
         key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
         envs: REPOSITORY_NAME, REPOSITORY_NAME_FULL, DB_NAME, DB_USERNAME, DB_PASSWORD, PROJECT_NAME
