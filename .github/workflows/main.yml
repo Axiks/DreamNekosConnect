@@ -35,5 +35,5 @@ jobs:
           cd $FOLDER_NAME
           git pull
           echo "Updated!"
-          docker compose -p $PROJECT_NAME up --force-recreate
+          docker compose -p $PROJECT_NAME up --build --force-recreate
           echo "Container run!"
