@@ -5,19 +5,16 @@ on:
     branches: [ main ]
 
 jobs:
-  deploy:
+   build-and-push-image:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Docker Remote Deployment
-      uses: sulthonzh/docker-remote-deployment-action@v0.1.2-beta     
+    - name: executing remote ssh commands using ssh key
+      uses: appleboy/ssh-action@v1.0.3
       with:
-        remote_docker_host: "${{ secrets.DEPLOY_USERNAME }}@${{ secrets.DEPLOY_HOST }}"
-        ssh_private_key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-        ssh_public_key: ${{ secrets.DEPLOY_PUBLIC_KEY }}
-        deployment_mode: docker-swarm
-        copy_stack_file: true
-        deploy_path: ~/Dockers
-        stack_file_name: docker-compose.yaml
-        keep_files: 5
-        args: whoami
+        host: ${{ secrets.DEPLOY_HOST }}
+        username: ${{ secrets.DEPLOY_USERNAME }}
+        key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
+        script:  |
+          cd ~/Dockers/githubaction
+          git clone git@github.com:${{ env.GITHUB_REPOSITORY }}.git
