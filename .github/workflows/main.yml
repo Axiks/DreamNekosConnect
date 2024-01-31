@@ -13,19 +13,26 @@ jobs:
       env:
          REPOSITORY_NAME: ${{ github.repository }}
          REPOSITORY_NAME_FULL: ${{ github.repository }}.git
+         DB_NAME: ${{ secrets.APP_DB_NAME }}
+         POSTGRES_USER:  ${{ secrets.APP_DB_USER }}
+         POSTGRES_PASSWORD:  ${{ secrets.APP_PASSWORD }}
       with:
         host: ${{ secrets.DEPLOY_HOST }}
         username: ${{ secrets.DEPLOY_USERNAME }}
         key: ${{ secrets.DEPLOY_PRIVATE_KEY }}
-        envs: REPOSITORY_NAME, REPOSITORY_NAME_FULL
+        envs: REPOSITORY_NAME, REPOSITORY_NAME_FULL, DB_NAME, POSTGRES_USER, POSTGRES_PASSWORD
         script:  |
           cd ~/Dockers/githubaction
           FOLDER_NAME=$(basename "$REPOSITORY_NAME")
           if [ -d "$FOLDER_NAME" ]
           then
-            git pull
-            echo "Updated!"
+            echo "Exist!"
           else
             git clone git@github.com:$REPOSITORY_NAME_FULL
             echo "Clone repository!"
           fi
+          cd $FOLDER_NAME
+          git pull
+          echo "Updated!"
+          docker compose up -e DB_NAME=$DB_NAME -e POSTGRES_USER=$POSTGRES_USER -e POSTGRES_USER=$POSTGRES_PASSWORD
+          echo "Container run!"
