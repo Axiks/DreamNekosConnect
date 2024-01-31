@@ -34,5 +34,5 @@ jobs:
           cd $FOLDER_NAME
           git pull
           echo "Updated!"
-          docker compose up -e DB_NAME=$DB_NAME -e POSTGRES_USER=$POSTGRES_USER -e POSTGRES_USER=$POSTGRES_PASSWORD
+          docker compose up
           echo "Container run!"
