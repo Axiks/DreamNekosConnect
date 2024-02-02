@@ -12,6 +12,7 @@ namespace DreamNekosConnect.Lib
         public virtual DbSet<InterestEntity> Interests { get; set; }
         public virtual DbSet<InterestTypeEntity> InterestType { get; set; }
         public virtual DbSet<UserInterestEntity> UserInterest { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<UserEntity>()
