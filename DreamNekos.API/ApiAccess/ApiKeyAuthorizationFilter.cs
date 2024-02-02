@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace DreamNekos.API.Helpers
 {
@@ -21,7 +22,8 @@ namespace DreamNekos.API.Helpers
                 return;
             }
 
-            var token = context.HttpContext.Request.Headers["Authorization"].FirstOrDefault().Split(" ")[1];
+            //var token = context.HttpContext.Request.Headers["Authorization"].First().Split(" ")[1];
+            var token = context.HttpContext.Request.Headers["Authorization"].First();
 
             if (!_apiKeyValidator.IsValid(token))
             {

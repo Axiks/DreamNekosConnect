@@ -2,7 +2,7 @@
 {
     public class CreateProfileRequest
     {
-        public int TgId {  get; set; }
+        public long TgId {  get; set; }
         public string Name { get; set; }
         public string? About { get; set; }
     }

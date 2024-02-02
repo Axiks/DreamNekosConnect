@@ -8,7 +8,7 @@ namespace DreamNekosConnect.Lib.Entities
 {
     public class UserEntity : BasicEntity
     {
-        public required int TgId { get; set; }
+        public required long TgId { get; set; }
         public string Name { get; set; }
         public string? About {  get; set; }
         public List<InterestEntity> Interest { get; set; } = new List<InterestEntity>();

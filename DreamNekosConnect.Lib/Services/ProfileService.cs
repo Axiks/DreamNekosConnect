@@ -12,7 +12,7 @@ namespace DreamNekosConnect.Lib.Services
         {
             _dbContext = applicationDbContext;
         }
-        public UserEntity CreateProfile(int tgId, string name, string? about)
+        public UserEntity CreateProfile(long tgId, string name, string? about)
         {
             var newUser = new UserEntity{ TgId = tgId, Name = name, About = about };
             _dbContext.Users.Add(newUser);
@@ -27,7 +27,7 @@ namespace DreamNekosConnect.Lib.Services
             if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
             return user;
         }
-        public UserEntity GetProfileByTgId(int tgId) {
+        public UserEntity GetProfileByTgId(long tgId) {
             var user = _dbContext.Users.FirstOrDefault(u => u.TgId == tgId);
             if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
             return user;

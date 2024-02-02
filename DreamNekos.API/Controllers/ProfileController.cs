@@ -7,6 +7,7 @@ using DreamNekos.API.Response.Link;
 using DreamNekos.API.Response.Profile;
 using DreamNekosConnect.Lib;
 using DreamNekosConnect.Lib.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
 using System.Net;
