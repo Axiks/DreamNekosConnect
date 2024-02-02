@@ -29,7 +29,7 @@ namespace DreamNekos.API.Controllers
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
             var claims = new[] {
-                new Claim(JwtRegisteredClaimNames.Sub, "App ID"),
+                new Claim(JwtRegisteredClaimNames.Sub, "App ID <- in future"),
                 new Claim("CustomerType", "3-party app"),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
@@ -38,7 +38,7 @@ namespace DreamNekos.API.Controllers
                 _config["Jwt:Issuer"],
                 _config["Jwt:Audience"],
                 claims,
-                expires: DateTime.Now.AddMinutes(60*30*12),
+                expires: DateTime.Now.AddSeconds(Int32.Parse(_config["Jwt:AliveTime"])),
                 signingCredentials: credentials);
 
             var response = new TokenResponse { Token = new JwtSecurityTokenHandler().WriteToken(token) };
