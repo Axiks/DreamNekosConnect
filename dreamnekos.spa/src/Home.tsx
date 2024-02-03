@@ -1,10 +1,34 @@
-import { Table } from 'flowbite-react';
+import React, { useEffect, useState } from 'react';
 import { Sidebar } from 'flowbite-react';
 import { HiChartPie, HiUser, HiViewBoards } from 'react-icons/hi';
-import EditModal from './EditModal';
-
+import { getInterestTypes, getInterests } from './services/apiWrapper';
+import { InterestResponse, InterestTypeResponse } from './services/openapi';
+import InterestTypeView from './InterestTypeView';
+import InterestView from './InterestType';
 
 function Home() {
+    const [interests, setInterests] = useState<InterestResponse[]>([]);
+    const [data, setData] = useState<InterestTypeResponse[]>([]);
+
+      useEffect(() => {
+        // declare the data fetching function
+        const fetchData = async () => {
+          const data = await getInterestTypes();
+          console.log(data)
+          setData(data)
+
+          const interests = await getInterests();
+          console.log(interests)
+          setInterests(interests)
+        }
+      
+        // call the function
+        fetchData()
+          // make sure to catch any error
+          .catch(console.error);
+      }, [])
+      
+
   return (
       <div className="flex ">
         {/* <EditModal /> */}
@@ -31,89 +55,8 @@ function Home() {
             </Sidebar>
         </div>
         <div className="flex-auto px-4">
-        <Table hoverable={true}>
-            <Table.Head>
-                <Table.HeadCell>
-                Interest name
-                </Table.HeadCell>
-                <Table.HeadCell>
-                Inetest type
-                </Table.HeadCell>
-                <Table.HeadCell>
-                <span className="sr-only">
-                    Edit
-                </span>
-                </Table.HeadCell>
-            </Table.Head>
-            <Table.Body className="divide-y">
-                <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                    Apple MacBook Pro 17"
-                </Table.Cell>
-                <Table.Cell>
-                    Sliver
-                </Table.Cell>
-                <Table.Cell>
-                    Laptop
-                </Table.Cell>
-                <Table.Cell>
-                    $2999
-                </Table.Cell>
-                <Table.Cell>
-                    <a
-                    href="/tables"
-                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                    >
-                    Edit
-                    </a>
-                </Table.Cell>
-                </Table.Row>
-                <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                    Microsoft Surface Pro
-                </Table.Cell>
-                <Table.Cell>
-                    White
-                </Table.Cell>
-                <Table.Cell>
-                    Laptop PC
-                </Table.Cell>
-                <Table.Cell>
-                    $1999
-                </Table.Cell>
-                <Table.Cell>
-                    <a
-                    href="/tables"
-                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                    >
-                    Edit
-                    </a>
-                </Table.Cell>
-                </Table.Row>
-                <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-                <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
-                    Magic Mouse 2
-                </Table.Cell>
-                <Table.Cell>
-                    Black
-                </Table.Cell>
-                <Table.Cell>
-                    Accessories
-                </Table.Cell>
-                <Table.Cell>
-                    $99
-                </Table.Cell>
-                <Table.Cell>
-                    <a
-                    href="/tables"
-                    className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                    >
-                    Edit
-                    </a>
-                </Table.Cell>
-                </Table.Row>
-            </Table.Body>
-            </Table>
+            <InterestView interests={interests} />
+            <InterestTypeView InterestTypes={data}  />
         </div>
       </div>
   )
