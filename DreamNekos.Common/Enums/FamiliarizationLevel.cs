@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DreamNekosConnect.Lib.Enums
+namespace DreamNekos.Common.Enums
 {
     public enum FamiliarizationLevel
     {

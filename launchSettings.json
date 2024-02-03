@@ -8,10 +8,6 @@
       },
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "DB_NAME": "dreamneko_db",
-        "DB_USERNAME": "vanila",
-        "DB_PASSWORD": "megapassVanill",
-        "APP_CONTAINER_PORT": "32777"
       }
     }
   }

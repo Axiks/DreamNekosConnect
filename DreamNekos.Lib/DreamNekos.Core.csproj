@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DreamNekosConnect.Common\DreamNekosConnect.Common.csproj" />
+    <ProjectReference Include="..\DreamNekos.Common\DreamNekos.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>

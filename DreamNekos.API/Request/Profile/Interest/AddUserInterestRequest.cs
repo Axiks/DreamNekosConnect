@@ -1,4 +1,4 @@
-﻿using DreamNekosConnect.Lib.Enums;
+﻿using DreamNekos.Common.Enums;
 
 namespace DreamNekos.API.Request.Profile.Interest
 {

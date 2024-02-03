@@ -7,6 +7,7 @@
     <InvariantGlobalization>true</InvariantGlobalization>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <GenerateDocumentationFile>False</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,12 +27,13 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
     <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.12" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DreamNekosConnect.Common\DreamNekosConnect.Common.csproj" />
-    <ProjectReference Include="..\DreamNekosConnect.Lib\DreamNekos.Core.csproj" />
+    <ProjectReference Include="..\DreamNekos.Common\DreamNekos.Common.csproj" />
+    <ProjectReference Include="..\DreamNekos.Lib\DreamNekos.Core.csproj" />
   </ItemGroup>
 
 </Project>

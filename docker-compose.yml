@@ -4,7 +4,7 @@ services:
   dreamnekos.api:
     image: ${DOCKER_REGISTRY-}dreamnekosapi
     ports:
-      - "32777:8080"
+      - "${APP_CONTAINER_PORT}:8080"
     depends_on:
         - "postgres_db"
     build:
@@ -19,9 +19,9 @@ services:
       - pgconf:/etc/postgresql
       - pglog:/var/log/postgresql
     environment:
-        POSTGRES_DB: "${DB_NAME}"
-        POSTGRES_USER: "${DB_USERNAME}"
-        POSTGRES_PASSWORD: "${DB_PASSWORD}"
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_DB=${DB_NAME}
 
 volumes:
   pgdata:

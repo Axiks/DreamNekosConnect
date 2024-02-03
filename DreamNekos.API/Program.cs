@@ -1,11 +1,12 @@
 using DreamNekos.API.Helpers;
 using DreamNekos.API.Mapper.Profiles;
 using DreamNekos.Core.Services;
-using DreamNekosConnect.Lib;
-using DreamNekosConnect.Lib.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
+using DreamNekosConnect.Lib.Services;
+using DreamNekosConnect.Lib;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,8 +27,9 @@ builder.Services.AddIdentityApiEndpoints<IdentityUser>()
     .AddEntityFrameworkStores<ApplicationDbContext>();*/
 
 var Configuration = builder.Configuration;
+var connectionString = Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-        options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+        options.UseNpgsql(connectionString));
 
 builder.Services.AddSingleton<ApiKeyAuthorizationFilter>();
 builder.Services.AddSingleton<IApiKeyValidator, ApiKeyValidator>();
@@ -42,7 +44,7 @@ builder.Services.AddSwaggerGen(c => {
         Title = "Vanilla_API",
         Version = "v1"
     });
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+    c.AddSecurityDefinition("JWTApp", new OpenApiSecurityScheme()
     {
         Name = "Authorization",
         Type = SecuritySchemeType.ApiKey,
@@ -56,12 +58,13 @@ builder.Services.AddSwaggerGen(c => {
             new OpenApiSecurityScheme {
                 Reference = new OpenApiReference {
                     Type = ReferenceType.SecurityScheme,
-                        Id = "Bearer"
+                        Id = "JWTApp"
                 }
             },
             new string[] {}
         }
     });
+
 });
 
 builder.Services.AddScoped<ProfileService>();

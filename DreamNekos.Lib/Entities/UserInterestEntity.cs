@@ -1,4 +1,4 @@
-﻿using DreamNekosConnect.Lib.Enums;
+﻿using DreamNekos.Common.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

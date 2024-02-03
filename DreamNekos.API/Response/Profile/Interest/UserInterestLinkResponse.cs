@@ -1,5 +1,5 @@
 ﻿using DreamNekos.API.Response.Interest;
-using DreamNekosConnect.Lib.Enums;
+using DreamNekos.Common.Enums;
 
 namespace DreamNekos.API.Response.Profile.Interest
 {

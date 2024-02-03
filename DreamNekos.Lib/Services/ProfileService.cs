@@ -1,6 +1,6 @@
 ﻿using DreamNekos.API.Helpers;
+using DreamNekos.Common.Enums;
 using DreamNekosConnect.Lib.Entities;
-using DreamNekosConnect.Lib.Enums;
 using Microsoft.EntityFrameworkCore;
 
 namespace DreamNekosConnect.Lib.Services
