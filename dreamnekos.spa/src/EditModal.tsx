@@ -1,47 +1,75 @@
 import { Button, Modal } from 'flowbite-react';
+import { InterestResponse } from './services/openapi';
+import { useState } from 'react';
+import { Label, TextInput, Select } from 'flowbite-react';
 
-export default function EditModal(){
+interface EditInterestProps {
+    interest: InterestResponse;
+}
+
+export default function EditInterestModal(props: EditInterestProps){
+    const [showModal, setShowModal] = useState<boolean>(false);
+    const [name, setName] = useState<string>(props.interest.name);
+
     const onClick = (event: React.MouseEvent<HTMLElement>) => {
         console.log(event.target);
         console.log(event.currentTarget);
+        setShowModal(true);
       };
 
       const onClose = (event: React.MouseEvent<HTMLElement>) => {
         console.log(event.target);
         console.log(event.currentTarget);
+        setShowModal(false);
       };
+
+      const onChange = (e: React.FormEvent<HTMLInputElement>) => {
+        const newValue = e.currentTarget.value;
+        setName(newValue);
+      }
 
     return(
         <div>
             <Button onClick={onClick}>
-                Toggle modal
+                Edit
             </Button>
             <Modal
-                show={false}
+                show={showModal}
                 onClose={onClose}
             >
                 <Modal.Header>
-                Terms of Service
+                Edit interest
                 </Modal.Header>
                 <Modal.Body>
-                <div className="space-y-6">
-                    <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                    With less than a month to go before the European Union enacts new consumer privacy laws for its citizens, companies around the world are updating their terms of service agreements to comply.
-                    </p>
-                    <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
-                    The European Union’s General Data Protection Regulation (G.D.P.R.) goes into effect on May 25 and is meant to ensure a common set of data rights in the European Union. It requires organizations to notify users as soon as possible of high-risk data breaches that could personally affect them.
-                    </p>
+                <div className="flex max-w-md flex-col gap-4">
+                    <div>
+                        <div className="mb-2 block">
+                            <Label htmlFor="small" value="Name" />
+                        </div>
+                        <TextInput id="small" type="text" value={name} sizing="sm"  onChange={onChange} />
+                    </div>
+                    <div className="max-w-md">
+                        <div className="mb-2 block">
+                            <Label htmlFor="countries" value="Type" />
+                        </div>
+                        <Select id="countries" required>
+                            <option>United States</option>
+                            <option>Canada</option>
+                            <option>France</option>
+                            <option>Germany</option>
+                        </Select>
+                    </div>
                 </div>
                 </Modal.Body>
                 <Modal.Footer>
                 <Button onClick={onClick}>
-                    I accept
+                    Save
                 </Button>
                 <Button
                     color="gray"
-                    onClick={onClick}
+                    onClick={onClose}
                 >
-                    Decline
+                    Cancel
                 </Button>
                 </Modal.Footer>
             </Modal>

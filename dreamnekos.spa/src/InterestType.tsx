@@ -1,5 +1,7 @@
 import { Table } from 'flowbite-react';
 import { InterestResponse } from './services/openapi';
+import EditModal from './EditModal';
+import EditInterestModal from './EditModal';
 
 interface InterestViewProps {
     interests: InterestResponse[];
@@ -20,6 +22,8 @@ export default function InterestView(props: InterestViewProps){
                 <span className="sr-only">
                     Edit
                 </span>
+                </Table.HeadCell>
+                <Table.HeadCell>    
                 <span className="sr-only">
                     Delete
                 </span>
@@ -34,12 +38,13 @@ export default function InterestView(props: InterestViewProps){
                         {interest.interestType?.name}
                     </Table.Cell>
                     <Table.Cell>
-                        <a
+                        {/* <a
                         href="/tables"
                         className="font-medium text-blue-600 hover:underline dark:text-blue-500"
                         >
                         Edit
-                        </a>
+                        </a> */}
+                        <EditInterestModal interest={interest}  />
                     </Table.Cell>
                     <Table.Cell>
                         <a
