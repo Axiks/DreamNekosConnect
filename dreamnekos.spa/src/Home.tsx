@@ -6,7 +6,6 @@ import { Outlet, Link } from "react-router-dom";
 function Home() {
   return (
       <div className="flex ">
-        {/* <EditModal /> */}
         <div className="flex" id="sidebar">
             <Sidebar aria-label="Default sidebar example">
                 <Sidebar.Items>

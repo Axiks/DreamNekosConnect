@@ -1,7 +1,8 @@
 import { Button, Modal } from 'flowbite-react';
-import { InterestResponse } from './services/openapi';
-import { useState } from 'react';
+import { InterestResponse, InterestTypeResponse, UpdateInterestRequest } from './services/openapi';
+import { useContext, useEffect, useState } from 'react';
 import { Label, TextInput, Select } from 'flowbite-react';
+import { InterestControllContexttt } from './context/InterestControllContext';
 
 interface EditInterestProps {
     interest: InterestResponse;
@@ -10,6 +11,25 @@ interface EditInterestProps {
 export default function EditInterestModal(props: EditInterestProps){
     const [showModal, setShowModal] = useState<boolean>(false);
     const [name, setName] = useState<string>(props.interest.name);
+    const [typeIndex, setTypeIndex] = useState<number>(0);
+    const [typeList, setTypeList] = useState<InterestTypeResponse[] | undefined>(undefined);
+
+    //const [type, setType] = useState<>();
+    const ttt = useContext(InterestControllContexttt);
+
+    useEffect(() => {
+        console.log("ese efect")
+        console.log(ttt.typesOfInterests)
+
+        ttt.typesOfInterests
+        .then((response) => {
+            setTypeList(response)
+
+            var index = response.findIndex(x => x.interestTypeId == props.interest.interestType!.interestTypeId)
+            setTypeIndex(index)
+        })
+        .catch((error) => setTypeList([]))
+    }, []);
 
     const onClick = (event: React.MouseEvent<HTMLElement>) => {
         console.log(event.target);
@@ -26,6 +46,33 @@ export default function EditInterestModal(props: EditInterestProps){
       const onChange = (e: React.FormEvent<HTMLInputElement>) => {
         const newValue = e.currentTarget.value;
         setName(newValue);
+      }
+
+    const onSave = (event: React.MouseEvent<HTMLElement>) => {
+        console.log(event.target);
+        console.log(event.currentTarget);
+
+        const newData : UpdateInterestRequest = {
+            interestId: props.interest.interestId,
+            name: name,
+            interestTypeId: typeList![typeIndex].interestTypeId
+        }
+
+        console.log("newData")
+        console.log(newData)
+
+        ttt.updateInterest(props.interest.interestId, newData);
+
+        setShowModal(false);
+    };
+
+    const onSelectType = (e: React.FormEvent<HTMLSelectElement>) => {
+        const selectedIndex = Number(e.currentTarget.value);
+
+        console.log("New walue")
+        console.log(selectedIndex)
+
+        setTypeIndex(selectedIndex)
       }
 
     return(
@@ -50,19 +97,20 @@ export default function EditInterestModal(props: EditInterestProps){
                     </div>
                     <div className="max-w-md">
                         <div className="mb-2 block">
-                            <Label htmlFor="countries" value="Type" />
+                            <Label htmlFor="types" value="Type" />
                         </div>
-                        <Select id="countries" required>
-                            <option>United States</option>
-                            <option>Canada</option>
-                            <option>France</option>
-                            <option>Germany</option>
+                        <Select id="types" value={typeIndex} onChange={onSelectType}>
+                            {
+                                typeList != undefined && typeList != null && (
+                                    typeList.map((type, index) => <option key={index} value={index}>{type.name}</option>)
+                                )
+                            }
                         </Select>
                     </div>
                 </div>
                 </Modal.Body>
                 <Modal.Footer>
-                <Button onClick={onClick}>
+                <Button onClick={onSave}>
                     Save
                 </Button>
                 <Button

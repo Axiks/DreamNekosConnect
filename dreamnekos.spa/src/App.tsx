@@ -8,8 +8,10 @@ import ErrorPage from "./Error-Page";
 import InterestView from './InterestType';
 import InterestTypeView from './InterestTypeView';
 import { useEffect, useState } from 'react';
+
 import { InterestResponse, InterestTypeResponse } from './services/openapi';
-import { getInterests, getInterestTypes } from './services/apiWrapper';
+import { getInterests, getInterestTypes, updateInterests } from './services/apiWrapper';
+import { InterestControllProvider } from './context/InterestControllContext';
 
 function App() {
   const [interests, setInterests] = useState<InterestResponse[]>([]);
@@ -22,9 +24,9 @@ function App() {
         console.log(data)
         setData(data)
 
-        const interests = await getInterests();
-        console.log(interests)
-        setInterests(interests)
+        // const interests = await getInterests();
+        // console.log(interests)
+        // setInterests(interests)
       }
     
       // call the function
@@ -45,7 +47,7 @@ function App() {
           },
           {
             path: "/interests",
-            element: <InterestView interests={interests} />,
+            element: <InterestView />,
           },
           {
             path: "/interestTypes",
@@ -60,7 +62,9 @@ function App() {
         <div className="container p-4 text-xl font-medium mx-auto">
           Vanilla
         </div>
-        <RouterProvider router={router} />
+        <InterestControllProvider>
+          <RouterProvider router={router} />
+        </InterestControllProvider>
       </div>
   )
 }

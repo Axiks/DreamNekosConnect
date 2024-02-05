@@ -1,13 +1,17 @@
-import { Table } from 'flowbite-react';
+import { Button, Table } from 'flowbite-react';
 import { InterestResponse } from './services/openapi';
 import EditModal from './EditModal';
 import EditInterestModal from './EditModal';
+import { useContext } from 'react';
+import { InterestControllContexttt } from './context/InterestControllContext';
 
-interface InterestViewProps {
-    interests: InterestResponse[];
-}
+export default function InterestView(){
+    const ttt = useContext(InterestControllContexttt);
 
-export default function InterestView(props: InterestViewProps){
+    const onDelete = (interetstId: string) => {
+        ttt.deleteInterest(interetstId);
+    };
+
     return(
         <>
         <Table hoverable={true}>
@@ -30,7 +34,7 @@ export default function InterestView(props: InterestViewProps){
                 </Table.HeadCell>
             </Table.Head>
             <Table.Body className="divide-y">
-            {   props.interests.map((interest, index) => <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+            {   ttt.interests.map((interest, index) => <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
                     <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         {interest.name}
                     </Table.Cell>
@@ -47,16 +51,13 @@ export default function InterestView(props: InterestViewProps){
                         <EditInterestModal interest={interest}  />
                     </Table.Cell>
                     <Table.Cell>
-                        <a
-                        href="/tables"
-                        className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                        >
+                    <Button onClick={() => onDelete(interest.interestId!)}>
                         Delete
-                        </a>
+                    </Button>
                     </Table.Cell>
                 </Table.Row> )}
             </Table.Body>
-            </Table>
+        </Table>
         </>
     )
 }
