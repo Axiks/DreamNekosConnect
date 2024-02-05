@@ -2,8 +2,7 @@ import { Sidebar } from 'flowbite-react';
 import { HiChartPie, HiUser, HiViewBoards } from 'react-icons/hi';
 import { Outlet, Link } from "react-router-dom";
 
-
-function Home() {
+function HomePage() {
   return (
       <div className="flex ">
         <div className="flex" id="sidebar">
@@ -39,4 +38,4 @@ function Home() {
   )
 }
 
-export default Home
+export default HomePage

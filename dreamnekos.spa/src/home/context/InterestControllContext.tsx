@@ -1,45 +1,23 @@
-import { ReactChild, ReactChildren, ReactFragment, ReactPortal, createContext, useEffect, useState } from "react";
-import { InterestResponse, InterestTypeResponse, UpdateInterestRequest } from "../services/openapi";
-import { getInterests, updateInterests, getInterestTypes, deleteInterests } from "../services/apiWrapper";
+import { createContext, useEffect, useState } from "react";
+import { InterestResponse, InterestTypeResponse, UpdateInterestRequest } from "../../services/openapi";
+import { getInterests, updateInterests, getInterestTypes, deleteInterests } from "../../services/apiWrapper";
 import React from "react";
 
 interface InterestControllService {
     interests: InterestResponse[],
     typesOfInterests: Promise<InterestTypeResponse[]>,
     updateInterest: (interestId: string, requestBody: UpdateInterestRequest) => Promise<void> | null,
-    deleteInterest: (interestId: string) => Promise<void>
+    deleteInterest: (interestId: string) => Promise<void> | null
 }
-
-// function loadTypesOfInterests() {
-//   let typesOfInterests: InterestTypeResponse[] | undefined;
-
-//   const fetchData = () => {
-//     return Promise.resolve(getInterestTypes())
-//       .then(data => {
-//         typesOfInterests = data;
-//       })
-//       .catch(err => {
-//         console.error(err);
-//         typesOfInterests = undefined;
-//       });
-//   };
-
-//   fetchData().then(() => {
-//     console.log("TEST loadTypesOfInterests");
-//     console.log(typesOfInterests);
-//     console.log("TEST END loadTypesOfInterests");
-//   });
-
-//   return typesOfInterests;
-// }
 
 export const defaultInterestControllService: InterestControllService = {
   interests: [],
   typesOfInterests: getInterestTypes(),
-  updateInterest:  (interestId: string, requestBody: UpdateInterestRequest) => null
+  updateInterest: (interestId: string, requestBody: UpdateInterestRequest) => null,
+  deleteInterest: (interestId: string) => null
 };
 
-export const InterestControllContexttt = createContext(defaultInterestControllService);
+export const InterestControllContext = createContext(defaultInterestControllService);
 
 interface AuxProps {
   children:  React.ReactNode;
@@ -96,8 +74,8 @@ export const InterestControllProvider = ({ children }: AuxProps) => {
     };
 
     return (
-      <InterestControllContexttt.Provider value={ InterestControllService }>
+      <InterestControllContext.Provider value={ InterestControllService }>
         {children}
-      </InterestControllContexttt.Provider>
+      </InterestControllContext.Provider>
     );
   };

@@ -1,20 +1,21 @@
-import './App.css'
-import Home from './Home'
+import './styles/App.css'
+import HomePage from './home/components/HomePage'
 import {
   createBrowserRouter,
+  Navigate,
   RouterProvider,
 } from "react-router-dom";
-import ErrorPage from "./Error-Page";
-import InterestView from './InterestType';
-import InterestTypeView from './InterestTypeView';
+import ErrorPage from "./error/components/ErrorPage";
+import InterestView from './home/components/InterestView';
+import InterestTypeView from './home/components/InterestTypeView';
 import { useEffect, useState } from 'react';
 
-import { InterestResponse, InterestTypeResponse } from './services/openapi';
-import { getInterests, getInterestTypes, updateInterests } from './services/apiWrapper';
-import { InterestControllProvider } from './context/InterestControllContext';
+import { InterestTypeResponse } from './services/openapi';
+import { getInterestTypes } from './services/apiWrapper';
+import { InterestControllProvider } from './home/context/InterestControllContext';
+import Head from './header/components/Head';
 
 function App() {
-  const [interests, setInterests] = useState<InterestResponse[]>([]);
   const [interestsTypes, setData] = useState<InterestTypeResponse[]>([]);
 
     useEffect(() => {
@@ -23,10 +24,6 @@ function App() {
         const data = await getInterestTypes();
         console.log(data)
         setData(data)
-
-        // const interests = await getInterests();
-        // console.log(interests)
-        // setInterests(interests)
       }
     
       // call the function
@@ -38,12 +35,12 @@ function App() {
     const router = createBrowserRouter([
       {
         path: "/",
-        element: <Home />,
+        element: <HomePage />,
         errorElement: <ErrorPage />,
         children: [
           {
-            path: "/",
-            element: <InterestView interests={interests} />,
+            index: true, 
+            element: <Navigate to="/interests" replace />
           },
           {
             path: "/interests",
@@ -59,9 +56,7 @@ function App() {
 
     return (
       <div className="flex flex-col max-w-screen-lg w-full ">
-        <div className="container p-4 text-xl font-medium mx-auto">
-          Vanilla
-        </div>
+        <Head />
         <InterestControllProvider>
           <RouterProvider router={router} />
         </InterestControllProvider>

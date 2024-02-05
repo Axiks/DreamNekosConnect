@@ -1,15 +1,13 @@
 import { Button, Table } from 'flowbite-react';
-import { InterestResponse } from './services/openapi';
-import EditModal from './EditModal';
-import EditInterestModal from './EditModal';
+import EditInterestModal from './EditInterestModal';
 import { useContext } from 'react';
-import { InterestControllContexttt } from './context/InterestControllContext';
+import { InterestControllContext } from '../context/InterestControllContext';
 
 export default function InterestView(){
-    const ttt = useContext(InterestControllContexttt);
+    const InterestControll = useContext(InterestControllContext);
 
     const onDelete = (interetstId: string) => {
-        ttt.deleteInterest(interetstId);
+        InterestControll.deleteInterest(interetstId);
     };
 
     return(
@@ -34,7 +32,7 @@ export default function InterestView(){
                 </Table.HeadCell>
             </Table.Head>
             <Table.Body className="divide-y">
-            {   ttt.interests.map((interest, index) => <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
+            {   InterestControll.interests.map((interest, index) => <Table.Row key={index} className="bg-white dark:border-gray-700 dark:bg-gray-800">
                     <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         {interest.name}
                     </Table.Cell>
@@ -42,13 +40,7 @@ export default function InterestView(){
                         {interest.interestType?.name}
                     </Table.Cell>
                     <Table.Cell>
-                        {/* <a
-                        href="/tables"
-                        className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                        >
-                        Edit
-                        </a> */}
-                        <EditInterestModal interest={interest}  />
+                        <EditInterestModal interestId={interest.interestId!}  />
                     </Table.Cell>
                     <Table.Cell>
                     <Button onClick={() => onDelete(interest.interestId!)}>

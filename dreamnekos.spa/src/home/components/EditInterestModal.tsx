@@ -1,32 +1,31 @@
 import { Button, Modal } from 'flowbite-react';
-import { InterestResponse, InterestTypeResponse, UpdateInterestRequest } from './services/openapi';
+import { InterestTypeResponse, UpdateInterestRequest } from '../../services/openapi';
 import { useContext, useEffect, useState } from 'react';
 import { Label, TextInput, Select } from 'flowbite-react';
-import { InterestControllContexttt } from './context/InterestControllContext';
+import { InterestControllContext } from '../context/InterestControllContext';
 
 interface EditInterestProps {
-    interest: InterestResponse;
+    interestId: string;
 }
 
 export default function EditInterestModal(props: EditInterestProps){
     const [showModal, setShowModal] = useState<boolean>(false);
-    const [name, setName] = useState<string>(props.interest.name);
-    const [typeIndex, setTypeIndex] = useState<number>(0);
+    const [typeIndex, setTypeIndex] = useState<number>(-1);
+    const [name, setName] = useState<string>("");
     const [typeList, setTypeList] = useState<InterestTypeResponse[] | undefined>(undefined);
 
-    //const [type, setType] = useState<>();
-    const ttt = useContext(InterestControllContexttt);
+    const InterestControll = useContext(InterestControllContext);
 
     useEffect(() => {
-        console.log("ese efect")
-        console.log(ttt.typesOfInterests)
-
-        ttt.typesOfInterests
+        InterestControll.typesOfInterests
         .then((response) => {
             setTypeList(response)
 
-            var index = response.findIndex(x => x.interestTypeId == props.interest.interestType!.interestTypeId)
-            setTypeIndex(index)
+            const interest = InterestControll.interests.find(x => x.interestId == props.interestId)
+            setName(interest!.name!)
+
+            const typeIndex = response.findIndex(x => x.interestTypeId == interest!.interestType!.interestTypeId)
+            setTypeIndex(typeIndex)
         })
         .catch((error) => setTypeList([]))
     }, []);
@@ -37,9 +36,7 @@ export default function EditInterestModal(props: EditInterestProps){
         setShowModal(true);
       };
 
-      const onClose = (event: React.MouseEvent<HTMLElement>) => {
-        console.log(event.target);
-        console.log(event.currentTarget);
+      const onClose = () => {
         setShowModal(false);
       };
 
@@ -53,7 +50,7 @@ export default function EditInterestModal(props: EditInterestProps){
         console.log(event.currentTarget);
 
         const newData : UpdateInterestRequest = {
-            interestId: props.interest.interestId,
+            interestId: props.interestId,
             name: name,
             interestTypeId: typeList![typeIndex].interestTypeId
         }
@@ -61,7 +58,7 @@ export default function EditInterestModal(props: EditInterestProps){
         console.log("newData")
         console.log(newData)
 
-        ttt.updateInterest(props.interest.interestId, newData);
+        InterestControll.updateInterest(props.interestId, newData);
 
         setShowModal(false);
     };
