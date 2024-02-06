@@ -14,6 +14,7 @@ import { InterestTypeResponse } from './services/openapi';
 import { getInterestTypes } from './services/apiWrapper';
 import { InterestControllProvider } from './home/context/InterestControllContext';
 import Head from './header/components/Head';
+import { InterestTypeControllContext, InterestTypeControllProvider } from './home/context/InterestTypeControllContext';
 
 function App() {
   const [interestsTypes, setData] = useState<InterestTypeResponse[]>([]);
@@ -58,7 +59,9 @@ function App() {
       <div className="flex flex-col max-w-screen-lg w-full ">
         <Head />
         <InterestControllProvider>
-          <RouterProvider router={router} />
+          <InterestTypeControllProvider>
+            <RouterProvider router={router} />
+          </InterestTypeControllProvider>
         </InterestControllProvider>
       </div>
   )

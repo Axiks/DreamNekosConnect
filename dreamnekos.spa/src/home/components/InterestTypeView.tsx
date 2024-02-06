@@ -1,14 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import { Table } from 'flowbite-react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Button, Table } from 'flowbite-react';
 import { InterestTypeResponse } from '../../services/openapi';
+import { InterestTypeControllContext } from '../context/InterestTypeControllContext';
+import EditInterestTypeModal from './EditInterestTypeModal';
+import EditInterestTypeProps from './EditInterestTypeModal'
 
 interface InterestTypeViewProps {
     InterestTypes: InterestTypeResponse[];
 }
 
 function InterestTypeView(props: InterestTypeViewProps){
+    const [editModal, setEditModal] = useState<JSX.Element>();
+
+    const InterestControll = useContext(InterestTypeControllContext);
+
+    const onDelete = (interetstTypeId: string) => {
+        InterestControll.deleteInterestType(interetstTypeId);
+    };
+
+const closeModal = () => {
+    setEditModal(<></>)
+}
+
+const onEdit = (interetstTypeId: string) => {
+    var modal = <EditInterestTypeModal 
+        interestTypeId={interetstTypeId}
+        closeModal={ closeModal }/>
+    setEditModal(modal)
+}
+
     return(
         <>
+        { editModal }
         <Table hoverable={true}>
             <Table.Head>
                 <Table.HeadCell>
@@ -26,26 +49,20 @@ function InterestTypeView(props: InterestTypeViewProps){
                 </Table.HeadCell>
             </Table.Head>
             <Table.Body className="divide-y">
-            {   props.InterestTypes.map((interestType, index) => 
+            {   InterestControll.interestTypes.map((interestType, index) => 
                 <Table.Row key={index} className="bg-white dark:border-gray-700 dark:bg-gray-800">
                     <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         {interestType.name}
                     </Table.Cell>
                     <Table.Cell>
-                        <a
-                        href="/tables"
-                        className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                        >
-                        Edit
-                        </a>
+                    <Button onClick={() => onEdit(interestType.interestTypeId!)}>
+                            Edit
+                        </Button>
                     </Table.Cell>
                     <Table.Cell>
-                        <a
-                        href="/tables"
-                        className="font-medium text-blue-600 hover:underline dark:text-blue-500"
-                        >
-                        Delete
-                        </a>
+                        <Button onClick={() => onDelete(interestType.interestTypeId!)}>
+                            Delete
+                        </Button>
                     </Table.Cell>
                 </Table.Row>
                 )}
