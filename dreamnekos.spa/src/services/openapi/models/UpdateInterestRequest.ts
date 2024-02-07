@@ -3,7 +3,6 @@
 /* tslint:disable */
 /* eslint-disable */
 export type UpdateInterestRequest = {
-    interestId?: string;
     name?: string | null;
     interestTypeId?: string | null;
 };

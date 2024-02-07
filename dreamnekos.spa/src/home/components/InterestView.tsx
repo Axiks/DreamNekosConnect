@@ -19,7 +19,6 @@ export default function InterestView(){
 
     const onEdit = (interetstId: string, response: InterestResponse) => {
         const onUpdateAction = (newData: UpdateInterestRequest) => { 
-            newData.interestId = interetstId //Temp fix
             InterestControll.updateInterest(interetstId, newData)
         }
         var modal = <EditInterestModal

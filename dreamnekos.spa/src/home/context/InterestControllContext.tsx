@@ -48,11 +48,8 @@ export const InterestControllProvider = ({ children }: AuxProps) => {
       const newValue = await updateInterests(interestId, requestBody)
 
       const elemIndex = interests.findIndex(e => e.interestId === interestId);
-
-      if (elemIndex){
-        interests[elemIndex].name = newValue.name;
-        interests[elemIndex].interestType = newValue.interestType;
-      }
+      interests[elemIndex].name = newValue.name;
+      interests[elemIndex].interestType = newValue.interestType;
 
       setInterests([...interests])
     }

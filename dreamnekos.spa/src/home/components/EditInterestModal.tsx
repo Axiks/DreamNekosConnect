@@ -40,11 +40,8 @@ export default function EditInterestModal(props: EditInterestProps){
         setName(newValue);
     }
 
-    const onSChangeType = (e: React.FormEvent<HTMLSelectElement>) => {
-        const selectedIndex = Number(e.currentTarget.value);
-
-        console.log("New walue")
-        console.log(selectedIndex)
+    const onChangeType = (e: React.FormEvent<HTMLSelectElement>) => {
+        const selectedIndex = Number(e.currentTarget.value)
 
         setTypeIndex(selectedIndex)
     }
@@ -86,7 +83,7 @@ export default function EditInterestModal(props: EditInterestProps){
                         <div className="mb-2 block">
                             <Label htmlFor="types" value="Type" />
                         </div>
-                        <Select id="types" value={typeIndex} onChange={onSChangeType}>
+                        <Select id="types" value={typeIndex} onChange={onChangeType}>
                             {
                                 typeList != undefined && typeList != null && (
                                     typeList.map((type, index) => <option key={index} value={index}>{type.name}</option>)
