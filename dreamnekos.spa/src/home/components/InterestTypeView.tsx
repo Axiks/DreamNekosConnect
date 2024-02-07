@@ -1,36 +1,61 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Table } from 'flowbite-react';
-import { InterestTypeResponse } from '../../services/openapi';
+import { InterestTypeResponse, UpdateInterestTypeRequest } from '../../services/openapi';
 import { InterestTypeControllContext } from '../context/InterestTypeControllContext';
 import EditInterestTypeModal from './EditInterestTypeModal';
-import EditInterestTypeProps from './EditInterestTypeModal'
 
 interface InterestTypeViewProps {
     InterestTypes: InterestTypeResponse[];
 }
 
 function InterestTypeView(props: InterestTypeViewProps){
+    const [createModal, setCreateModal] = useState<JSX.Element>();
     const [editModal, setEditModal] = useState<JSX.Element>();
 
-    const InterestControll = useContext(InterestTypeControllContext);
+    const InterestTypeControll = useContext(InterestTypeControllContext);
 
     const onDelete = (interetstTypeId: string) => {
-        InterestControll.deleteInterestType(interetstTypeId);
+        InterestTypeControll.deleteInterestType(interetstTypeId);
     };
 
-const closeModal = () => {
-    setEditModal(<></>)
-}
+    const closeModal = () => {
+        setCreateModal(<></>)
+        setEditModal(<></>)
+    }
 
-const onEdit = (interetstTypeId: string) => {
-    var modal = <EditInterestTypeModal 
-        interestTypeId={interetstTypeId}
-        closeModal={ closeModal }/>
-    setEditModal(modal)
-}
+
+    const onEditBtn = (interetstType: InterestTypeResponse) => {
+        const onEditAction = (newData: UpdateInterestTypeRequest) => {    
+            InterestTypeControll.updateInterestType(interetstType.interestTypeId!, newData)
+        }
+
+        var modal = <EditInterestTypeModal
+            modalName='Edit type interest'
+            interestTypeResponse={interetstType}
+            closeModal={ closeModal }
+            onAction={onEditAction}/>
+        setEditModal(modal)
+    }
+
+    const onCreateBtn = () => {
+        const onCreateAction = (newData: UpdateInterestTypeRequest) => {    
+            InterestTypeControll.createInterestType(newData)
+        }
+
+        var modal = <EditInterestTypeModal
+            modalName='Create type interest'
+            interestTypeResponse={null}
+            closeModal={ closeModal }
+            onAction={onCreateAction}/>
+        setCreateModal(modal)
+    }
 
     return(
         <>
+        <Button onClick={() => onCreateBtn()}>
+            Create type
+        </Button>
+        { createModal }
         { editModal }
         <Table hoverable={true}>
             <Table.Head>
@@ -49,13 +74,13 @@ const onEdit = (interetstTypeId: string) => {
                 </Table.HeadCell>
             </Table.Head>
             <Table.Body className="divide-y">
-            {   InterestControll.interestTypes.map((interestType, index) => 
+            {   InterestTypeControll.interestTypes.map((interestType, index) => 
                 <Table.Row key={index} className="bg-white dark:border-gray-700 dark:bg-gray-800">
                     <Table.Cell className="whitespace-nowrap font-medium text-gray-900 dark:text-white">
                         {interestType.name}
                     </Table.Cell>
                     <Table.Cell>
-                    <Button onClick={() => onEdit(interestType.interestTypeId!)}>
+                    <Button onClick={() => onEditBtn(interestType)}>
                             Edit
                         </Button>
                     </Table.Cell>

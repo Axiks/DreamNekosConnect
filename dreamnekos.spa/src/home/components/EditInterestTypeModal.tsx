@@ -1,22 +1,16 @@
-import { useContext, useEffect, useState } from "react";
-import { InterestTypeControllContext } from "../context/InterestTypeControllContext";
-import { UpdateInterestTypeRequest } from "../../services/openapi";
+import { useState } from "react";
+import { InterestTypeResponse, UpdateInterestTypeRequest } from "../../services/openapi";
 import { Button, Label, Modal, TextInput } from "flowbite-react";
 
 export interface EditInterestTypeProps {
-    interestTypeId: string;
+    modalName: string;
+    interestTypeResponse: InterestTypeResponse | null;
+    onAction: (resonse: UpdateInterestTypeRequest) => void;
     closeModal: () => void;
 }
 
 function EditInterestTypeModal(props: EditInterestTypeProps){
-    const [name, setName] = useState<string>("");
-
-    const InterestTypeControll = useContext(InterestTypeControllContext);
-
-    useEffect(() => {
-        var curentInterest = InterestTypeControll.interestTypes.find(x => x.interestTypeId == props.interestTypeId)
-        curentInterest?.name != null && setName(curentInterest!.name)
-    }, []);
+    const [name, setName] = useState<string>(props.interestTypeResponse?.name || "");
 
     const onClose = () => {
         props.closeModal();
@@ -34,9 +28,8 @@ function EditInterestTypeModal(props: EditInterestTypeProps){
         const newData : UpdateInterestTypeRequest = {
             name: name
         }
-
-        InterestTypeControll.updateInterestType(props.interestTypeId, newData)
-
+        
+        props.onAction(newData)
         onClose()
     }
 
@@ -47,7 +40,7 @@ function EditInterestTypeModal(props: EditInterestTypeProps){
                 onClose={onClose}
             >
                 <Modal.Header>
-                    Edit type interest
+                    {props.modalName}
                 </Modal.Header>
                 <Modal.Body>
                     <div className="flex max-w-md flex-col gap-4">
