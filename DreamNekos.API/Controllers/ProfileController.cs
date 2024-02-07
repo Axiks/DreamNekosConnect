@@ -6,6 +6,7 @@ using DreamNekos.API.Response.Interest;
 using DreamNekos.API.Response.Link;
 using DreamNekos.API.Response.Profile;
 using DreamNekosConnect.Lib;
+using DreamNekosConnect.Lib.Entities;
 using DreamNekosConnect.Lib.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -16,6 +17,8 @@ namespace DreamNekos.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [ApiKey]
+    [SwaggerResponse((int)HttpStatusCode.Unauthorized)]
     public class ProfileController : ControllerBase
     {
         private ProfileService _profileService;
@@ -26,6 +29,17 @@ namespace DreamNekos.API.Controllers
             _mapper = mapper;
         }
 
+        [ApiKey]
+        [HttpGet]
+        [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(List<GetProfileResponse>))]
+        public IActionResult GetProfileList()
+        {
+            List<UserEntity> result = _profileService.GetProfiles();
+            List<GetProfileResponse> response = _mapper.Map<List<GetProfileResponse>>(result);
+            return Ok(response);
+        }
+
+        [ApiKey]
         [HttpGet("{userId}")]
         [SwaggerResponse((int)HttpStatusCode.OK, Type = typeof(GetProfileResponse))]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]

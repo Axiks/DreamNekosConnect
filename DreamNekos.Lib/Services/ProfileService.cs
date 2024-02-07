@@ -19,6 +19,13 @@ namespace DreamNekosConnect.Lib.Services
             _dbContext.SaveChanges();
             return newUser;
         }
+        public List<UserEntity> GetProfiles()
+        {
+            var users = _dbContext.Users
+                .Include(x => x.Links)
+                .Include(x => x.UserInterest).ThenInclude(x => x.Interest).ThenInclude(x => x.InterestType).ToList();
+            return users;
+        }
         public UserEntity GetProfileById(Guid id) {
             var user = _dbContext.Users
                 .Include(x => x.Links)

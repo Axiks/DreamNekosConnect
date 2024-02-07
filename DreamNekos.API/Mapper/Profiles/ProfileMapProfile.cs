@@ -24,8 +24,7 @@ namespace DreamNekos.API.Mapper.Profiles
                 .ForMember(dest => dest.Interest, opt => opt.MapFrom(src => src.UserInterest));
             CreateMap<InterestEntity, InterestResponse>()
                 .ForMember(dest => dest.InterestId, opt => opt.MapFrom(src => src.Id));
-            CreateMap<UserInterestEntity, UserInterestLinkResponse>()
-                .ForMember(dest => dest.InterestLinkId, opt => opt.MapFrom(src => src.Id));
+            CreateMap<UserInterestEntity, UserInterestLinkResponse>();
         }
     }
 }

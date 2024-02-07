@@ -71,6 +71,7 @@ namespace DreamNekos.API.Controllers
 
         [ApiKey]
         [HttpDelete("{interestTypeId}")]
+        [SwaggerResponse((int)HttpStatusCode.OK)]
         [SwaggerResponse((int)HttpStatusCode.Unauthorized)]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult DeleteInterestType(Guid interestTypeId)

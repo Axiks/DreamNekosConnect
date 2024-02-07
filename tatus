@@ -1,0 +1,269 @@
+[33mcommit e9711fda157ce7518e28e366478504ace033542e[m[33m ([m[1;36mHEAD -> [m[1;32mCreateSPA[m[33m)[m
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Sat Feb 3 15:42:09 2024 +0100
+
+    make basic interest view with API
+
+[33mcommit 111a5230bb3067662dc11290067cd3e54602472c[m
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Sat Feb 3 12:36:07 2024 +0100
+
+    Init basic react spa app
+
+[33mcommit 6b5a701bb92600389ce9c11882c60cd76b2c293f[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Sat Feb 3 04:59:19 2024 +0100
+
+    the naming has been changed; .env is returned
+
+[33mcommit 023f148e2eb6018ba3c37f23de9cb0023ab9701f[m
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Fri Feb 2 14:41:22 2024 +0100
+
+    added authorization via Swagger; increased Tg d limit
+
+[33mcommit 129705625080033d9f4ab63c43ee4b1403fb77b6[m
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Fri Feb 2 13:09:13 2024 +0100
+
+    increased access token validity time
+
+[33mcommit c4282133497f2994e83c2e5ddb700818d06a9242[m
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Fri Feb 2 12:57:08 2024 +0100
+
+    Make uuid v7 for db id
+
+[33mcommit 4f408e35e3232b79a3093c5d7771ba20d265c9b9[m
+Merge: 1eceb1d a16cd93
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 05:20:03 2024 +0100
+
+    Merge branch 'main' of github.com:Axiks/DreamNekosConnect
+
+[33mcommit 1eceb1d9234aa545e09b86e605861774509933bb[m
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 05:19:47 2024 +0100
+
+    change host port
+
+[33mcommit a16cd935fabc5200667bee5c34116b440a487d56[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 05:14:43 2024 +0100
+
+    Update main.yml
+
+[33mcommit 85e60b3c8a6e2aab1bd42fc2521ef337eced13f7[m
+Merge: 21c9b8d f19825f
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 05:14:14 2024 +0100
+
+    Merge branch 'main' of github.com:Axiks/DreamNekosConnect
+
+[33mcommit 21c9b8dc0fa4daa92a453674a3ace8560f17bd59[m
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 05:13:59 2024 +0100
+
+    issued host port to env
+
+[33mcommit f19825f01352fb2aa68a6210c1938112b8dae918[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 04:54:36 2024 +0100
+
+    Update main.yml
+
+[33mcommit 7c6adc5b4c11ab927c892600f39c738a1697cf0b[m
+Merge: 2345baa d22850e
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 04:48:34 2024 +0100
+
+    Merge branch 'main' of github.com:Axiks/DreamNekosConnect
+
+[33mcommit 2345baa44944ec3d05a3b9b8d56c2d9a29814f8b[m
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 04:48:17 2024 +0100
+
+    avaible dataseed controller
+
+[33mcommit d22850e263548236fc726cdaff8decb33ce7be0f[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 04:42:46 2024 +0100
+
+    Update main.yml
+
+[33mcommit 0dbc78d59e9b814e2177a68894d27fd600c5aca5[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 04:40:30 2024 +0100
+
+    Update main.yml
+
+[33mcommit 43170ac7da13cf5f28801f25b6d1b7a5620be42f[m
+Merge: 30174cb ba56d5b
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 04:23:13 2024 +0100
+
+    Merge branch 'main' of github.com:Axiks/DreamNekosConnect
+
+[33mcommit 30174cbd900ed08bcdc4a9438665b0bf615f19ab[m
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 04:22:57 2024 +0100
+
+    add auto db migrate fun
+
+[33mcommit ba56d5b871e23f4ea641049a024552c2b0885030[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 04:02:41 2024 +0100
+
+    Update main.yml
+
+[33mcommit 998344c80def8061954e5a80602abbc3f0012cc3[m
+Author: Neko <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 03:59:17 2024 +0100
+
+    Hide port
+
+[33mcommit 42f94e30c0a8964618485a244c10f93ca2cec2d3[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 03:55:07 2024 +0100
+
+    Update main.yml
+
+[33mcommit 4f1bf789bf3019e1960e7f3bbda3efd8fffb7903[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 03:49:51 2024 +0100
+
+    Update main.yml
+
+[33mcommit 90b64758b9632cde5d7f9349f68b8bc4d8c99d76[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 03:39:50 2024 +0100
+
+    Update main.yml
+
+[33mcommit 706303fbf67de9a9f9ec894faf0ed13a1e2ab64e[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 03:33:57 2024 +0100
+
+    Update main.yml
+
+[33mcommit 5eb83e3e13129cede2b6515c83a6077672c57e75[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 03:18:15 2024 +0100
+
+    Update main.yml
+
+[33mcommit 36d5a5b189e29c16c8b10b08691184295423af18[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 03:15:28 2024 +0100
+
+    Update main.yml
+
+[33mcommit 4d25ea80cb1ce53dafad973c19e204a30d4f1888[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 03:12:19 2024 +0100
+
+    Update main.yml
+
+[33mcommit 9473109d7fe321683d932579552029689d938b52[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 03:10:32 2024 +0100
+
+    Update main.yml
+
+[33mcommit 4ec5d004066434099d9188f4ab300018bd2ac6b0[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 02:18:09 2024 +0100
+
+    Update main.yml
+
+[33mcommit d917ad57e1543863c5fe6d43e95ae7554cf6fa3f[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 02:17:10 2024 +0100
+
+    Update main.yml
+
+[33mcommit 6f7e476e96d46913350063bb10c918979e5af12e[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 02:15:14 2024 +0100
+
+    Update main.yml
+
+[33mcommit ef10bc9c721033337d7a1a268bb5d2d568450e07[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 02:09:56 2024 +0100
+
+    Update main.yml
+
+[33mcommit b21cf28963502f3889011ff2d6b2a3a41a35b4c8[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 02:00:35 2024 +0100
+
+    Update main.yml
+
+[33mcommit 8a76cd0acf388d3df5d99df838d3cc5f5cd860b8[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 01:58:07 2024 +0100
+
+    Update main.yml
+
+[33mcommit b07fe909c555c339e96cad080a863bd9b67aa6bd[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 01:54:01 2024 +0100
+
+    Update main.yml
+
+[33mcommit d7901fbfec1051034418bfebd5ecb032096927f2[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 01:48:02 2024 +0100
+
+    Update main.yml
+
+[33mcommit 1f6d29b5d96d639a4bf8e347d8dcaf6982ead205[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 01:44:40 2024 +0100
+
+    Update main.yml
+
+[33mcommit 8c65f9eafe2e4b6d500e807e953db0692042af24[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 01:43:34 2024 +0100
+
+    Update main.yml
+
+[33mcommit ef6b701797f0476fb3ec12e36f41232ae9105f8f[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 01:32:15 2024 +0100
+
+    Update main.yml
+
+[33mcommit 02f07859003de33b383a31b1534769b9d3f95d69[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 01:29:15 2024 +0100
+
+    Update main.yml
+
+[33mcommit 04958c7e67ed0a37da94303c6867dbc4538cb6ed[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 01:26:03 2024 +0100
+
+    Update main.yml
+
+[33mcommit a3584bbedad2a1e5d3b5d23e6d0f3b773b545716[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 01:24:44 2024 +0100
+
+    Update main.yml
+
+[33mcommit 7bde15f9efe76c2ceeaf68b0acefccf5c4407cb6[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 01:21:14 2024 +0100
+
+    Update main.yml
+
+[33mcommit 43f643fce897b52532e96198c0b65a890364b42d[m
+Author: Adrian <36519646+Axiks@users.noreply.github.com>
+Date:   Wed Jan 31 01:16:03 2024 +0100
+
+    Update main.yml
+
+[33mcommit c5d19a8965b6ba0f179b8bd86fd40ccc2c

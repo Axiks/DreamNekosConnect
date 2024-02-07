@@ -39,10 +39,18 @@ namespace DreamNekosConnect.Lib.Services
             _dbContext.SaveChanges();
             return interestType;
         }
-        public void DeleteInterestType(Guid interestId)
+        public void DeleteInterestType(Guid interestTypeId)
         {
-            var interestType = _dbContext.InterestType.FirstOrDefault(x => x.Id == interestId);
+            var interestType = _dbContext.InterestType.FirstOrDefault(x => x.Id == interestTypeId);
             if (interestType == null) throw new ElementNotFoundException("A interest type with such an ID does not exist.");
+
+            var interests = _dbContext.Interests.Where(x => x.InterestTypeId == interestTypeId).ToList();
+            foreach(var interest in interests)
+            {
+                interest.InterestType = null;
+                interest.InterestTypeId = null;
+            }
+
             _dbContext.Remove(interestType);
             _dbContext.SaveChanges();
         }

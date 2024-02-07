@@ -27,13 +27,14 @@ namespace DreamNekos.API.Controllers
             var avaibleInterestList = _interestService.GetAllInterest();
             foreach (var item in avaibleInterestList)
             {
-                var interestType = new InterestTypeResponse { InterestTypeId = item.InterestType.Id, Name = item.InterestType.Name };
-                interestListResponse.Add(new InterestResponse
+                var interest = new InterestResponse
                 {
                     InterestId = item.Id,
-                    Name = item.Name,
-                    InterestType = interestType
-                });
+                    Name = item.Name
+                };
+                interestListResponse.Add(interest);
+                if (item.InterestTypeId == null) { continue; }
+                interest.InterestType = new InterestTypeResponse { InterestTypeId = item.InterestType.Id, Name = item.InterestType.Name };
             }
 
             return Ok(interestListResponse);
@@ -68,10 +69,12 @@ namespace DreamNekos.API.Controllers
 
         [ApiKey]
         [HttpDelete("{interestId}")]
+        [SwaggerResponse((int)HttpStatusCode.OK)]
         [SwaggerResponse((int)HttpStatusCode.Unauthorized)]
         [SwaggerResponse((int)HttpStatusCode.NotFound)]
         public IActionResult DeleteInterest(Guid interestId)
         {
+            _interestService.DeleteInterest(interestId);
             return Ok();
         }
     }

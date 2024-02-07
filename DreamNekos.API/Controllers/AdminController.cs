@@ -1,4 +1,5 @@
-﻿using DreamNekos.Core.Services;
+﻿using DreamNekos.API.Helpers;
+using DreamNekos.Core.Services;
 using DreamNekosConnect.Lib;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -8,18 +9,19 @@ namespace DreamNekos.API.Controllers
 {
     [Route("[controller]")]
     [ApiController]
-    public class SeedDataController : ControllerBase
+    public class AdminController : ControllerBase
     {
         private readonly SeederService _seeder;
         private readonly ApplicationDbContext _dbContext;
 
-        public SeedDataController(SeederService seeder, ApplicationDbContext dbContext)
+        public AdminController(SeederService seeder, ApplicationDbContext dbContext)
         {
             _seeder = seeder;
             _dbContext = dbContext;
         }
 
-        [HttpPost]
+        [ApiKey]
+        [HttpPost("RunSeed")]
         public void RunSeed()
         {
             _dbContext.Database.EnsureDeleted();

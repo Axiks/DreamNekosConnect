@@ -1,11 +1,12 @@
 ﻿using DreamNekos.API.Response.Interest;
 using DreamNekos.Common.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace DreamNekos.API.Response.Profile.Interest
 {
     public class UserInterestLinkResponse
     {
-        public required Guid InterestLinkId { get; set; }
+        [Required]
         public required InterestResponse Interest { get; set; }
         public FamiliarizationLevel FamiliarizationLevel { get; set; }
     }

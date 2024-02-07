@@ -9,8 +9,6 @@ namespace DreamNekosConnect.Lib.Services
         private ApplicationDbContext _dbContext { get; set; }
         public InterestService(ApplicationDbContext applicationDbContext)
         {
-            /*var dbProvider = DbProvider.GetInstance();
-            _dbContext = dbProvider.GetDbContext();*/
             _dbContext = applicationDbContext;
         }
 
@@ -47,10 +45,16 @@ namespace DreamNekosConnect.Lib.Services
             return interest;
         }
         public void DeleteInterest(Guid interestId) {
+
             var interest = _dbContext.Interests
-               .First(x => x.Id == interestId);
+               .FirstOrDefault(x => x.Id == interestId);
             if (interest == null) throw new ElementNotFoundException("A interest with such an ID does not exist.");
+
+            var userCurentInterest = _dbContext.UserInterest.Where(x => x.InterestId == interestId);
+            _dbContext.UserInterest.RemoveRange(userCurentInterest);
+
             _dbContext.Interests.Remove(interest);
+
             _dbContext.SaveChanges();
         }
     }
