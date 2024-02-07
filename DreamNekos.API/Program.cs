@@ -71,6 +71,7 @@ builder.Services.AddScoped<ProfileService>();
 builder.Services.AddScoped<InterestService>();
 builder.Services.AddScoped<InterestTypeService>();
 builder.Services.AddScoped<SeederService>();
+builder.Services.AddScoped<StatisticService>();
 
 builder.Services.AddAutoMapper(typeof(ProfileMapProfile));
 
