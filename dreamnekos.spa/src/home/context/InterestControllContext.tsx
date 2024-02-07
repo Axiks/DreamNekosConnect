@@ -1,11 +1,12 @@
 import { createContext, useEffect, useState } from "react";
-import { InterestResponse, InterestTypeResponse, UpdateInterestRequest } from "../../services/openapi";
-import { getInterests, updateInterests, getInterestTypes, deleteInterests } from "../../services/apiWrapper";
+import { CreateInterestRequest, InterestResponse, InterestTypeResponse, UpdateInterestRequest } from "../../services/openapi";
+import { getInterests, updateInterests, getInterestTypes, deleteInterests, createInterests } from "../../services/apiWrapper";
 import React from "react";
 
 interface InterestControllService {
     interests: InterestResponse[],
     typesOfInterests: Promise<InterestTypeResponse[]>,
+    createInterest: (requestBody: CreateInterestRequest) => Promise<void> | null,
     updateInterest: (interestId: string, requestBody: UpdateInterestRequest) => Promise<void> | null,
     deleteInterest: (interestId: string) => Promise<void> | null
 }
@@ -13,6 +14,7 @@ interface InterestControllService {
 export const defaultInterestControllService: InterestControllService = {
   interests: [],
   typesOfInterests: getInterestTypes(),
+  createInterest: (requestBody: UpdateInterestRequest) => null,
   updateInterest: (interestId: string, requestBody: UpdateInterestRequest) => null,
   deleteInterest: (interestId: string) => null
 };
@@ -66,9 +68,16 @@ export const InterestControllProvider = ({ children }: AuxProps) => {
       setInterests([...interests])
     };
 
+    const interestCreate = async (requestBody: UpdateInterestRequest) => {
+      var newInterest = await createInterests(requestBody)
+      interests.push(newInterest)
+      setInterests([...interests])
+    }
+
     const InterestControllService: InterestControllService = {
       interests: interests,
       typesOfInterests: getInterestTypes(),
+      createInterest: interestCreate,
       updateInterest: interestUpdate,
       deleteInterest: interestDelete
     };
