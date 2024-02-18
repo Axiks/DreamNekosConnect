@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DreamNekosConnect.Lib.Services
 {
-    public class InterestService
+    public class ActivityService
     {
         private ApplicationDbContext _dbContext { get; set; }
-        public InterestService(ApplicationDbContext applicationDbContext)
+        public ActivityService(ApplicationDbContext applicationDbContext)
         {
             _dbContext = applicationDbContext;
         }

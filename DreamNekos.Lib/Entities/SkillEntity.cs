@@ -7,7 +7,7 @@ namespace DreamNekos.Core.Entities
         public required string Name { get; set; }
         public SkillType SkillType { get; set; }
 
-        public List<ActivityEntity> RelstedActivities { get; set; } = new List<ActivityEntity> { };
+        public List<ActivityEntity> RelatedActivities { get; set; } = new List<ActivityEntity> { };
 
         public List<UserEntity> Users { get; set; } = new List<UserEntity> { };
     }

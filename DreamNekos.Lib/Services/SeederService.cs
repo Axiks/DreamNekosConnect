@@ -1,5 +1,4 @@
 ﻿using DreamNekos.Core.Models.Parser;
-using DreamNekosConnect.Lib.Services;
 using Newtonsoft.Json;
 using System.Reflection;
 
@@ -8,12 +7,12 @@ namespace DreamNekos.Core.Services
     public class SeederService
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly InterestTypeService _interestTypeService;
-        private readonly InterestService _interestService;
+        private readonly SkillService _interestTypeService;
+        private readonly SkillService _interestService;
 
         private SeedData _data;
 
-        public SeederService(ApplicationDbContext dbContext, InterestTypeService interestTypeService, InterestService interestService)
+        public SeederService(ApplicationDbContext dbContext, SkillService interestTypeService, SkillService interestService)
         {
             _dbContext = dbContext;
             _interestTypeService = interestTypeService;

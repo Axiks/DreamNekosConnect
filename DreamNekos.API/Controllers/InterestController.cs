@@ -2,6 +2,7 @@
 using DreamNekos.API.Request.Interest;
 using DreamNekos.API.Response.Interest;
 using DreamNekos.API.Response.InterestType;
+using DreamNekos.Core.Services;
 using DreamNekosConnect.Lib.Services;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;
@@ -13,9 +14,9 @@ namespace DreamNekos.API.Controllers
     [ApiController]
     public class InterestController : ControllerBase
     {
-        private InterestService _interestService;
+        private ActivityService _interestService;
 
-        public InterestController(InterestService interestService)
+        public InterestController(ActivityService interestService)
         {
             _interestService = interestService;
         }

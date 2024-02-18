@@ -68,8 +68,8 @@ builder.Services.AddSwaggerGen(c => {
 });
 
 builder.Services.AddScoped<ProfileService>();
-builder.Services.AddScoped<InterestService>();
-builder.Services.AddScoped<InterestTypeService>();
+builder.Services.AddScoped<ActivityService>();
+builder.Services.AddScoped<ActivityService>();
 builder.Services.AddScoped<SeederService>();
 builder.Services.AddScoped<StatisticService>();
 

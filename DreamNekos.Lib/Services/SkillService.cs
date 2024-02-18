@@ -1,14 +1,13 @@
 ﻿using DreamNekos.API.Helpers;
-using DreamNekos.Core;
 using DreamNekos.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace DreamNekosConnect.Lib.Services
+namespace DreamNekos.Core.Services
 {
-    public class InterestTypeService
+    public class SkillService
     {
         private ApplicationDbContext _dbContext { get; set; }
-        public InterestTypeService(ApplicationDbContext applicationDbContext)
+        public SkillService(ApplicationDbContext applicationDbContext)
         {
             _dbContext = applicationDbContext;
         }
@@ -46,7 +45,7 @@ namespace DreamNekosConnect.Lib.Services
             if (interestType == null) throw new ElementNotFoundException("A interest type with such an ID does not exist.");
 
             var interests = _dbContext.Activities.Where(x => x.InterestTypeId == interestTypeId).ToList();
-            foreach(var interest in interests)
+            foreach (var interest in interests)
             {
                 interest.InterestType = null;
                 interest.InterestTypeId = null;

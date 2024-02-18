@@ -29,7 +29,7 @@ namespace DreamNekos.Core
 
             modelBuilder.Entity<ActivityEntity>()
                 .HasMany(x => x.RelatedSkills)
-                .WithMany(x => x.RelstedActivities);
+                .WithMany(x => x.RelatedActivities);
 
 
             /*modelBuilder.Entity<UserEntity>()
