@@ -1,4 +1,5 @@
-﻿using DreamNekos.Core.Models;
+﻿using DreamNekos.Core;
+using DreamNekos.Core.Models;
 using DreamNekosConnect.Lib.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -52,7 +53,7 @@ namespace DreamNekosConnect.Lib.Services
 
             async Task<List<InterestsDTO>> GetInterestsForType(Guid InterestTypeId)
             {
-                return await _dbContext.Interests.Where(x => x.InterestTypeId == InterestTypeId).Select(x => new InterestsDTO(x.Id, x.Name)).ToListAsync();
+                return await _dbContext.Activities.Where(x => x.InterestTypeId == InterestTypeId).Select(x => new InterestsDTO(x.Id, x.Name)).ToListAsync();
             }
 
             async Task<int> HowMuchUserHaveThisInterest(Guid InterestId)

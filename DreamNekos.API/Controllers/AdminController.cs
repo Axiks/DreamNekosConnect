@@ -1,6 +1,6 @@
 ﻿using DreamNekos.API.Helpers;
+using DreamNekos.Core;
 using DreamNekos.Core.Services;
-using DreamNekosConnect.Lib;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

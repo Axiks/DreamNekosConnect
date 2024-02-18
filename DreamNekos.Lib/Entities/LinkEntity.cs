@@ -1,4 +1,6 @@
-﻿namespace DreamNekosConnect.Lib.Entities
+﻿using DreamNekos.Core.Entities;
+
+namespace DreamNekosConnect.Lib.Entities
 {
     public class LinkEntity : BasicEntity
     {

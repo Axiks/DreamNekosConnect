@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UUIDNext;
-
-namespace DreamNekosConnect.Lib.Entities
+﻿namespace DreamNekos.Core.Entities
 {
     public class BasicEntity
     {

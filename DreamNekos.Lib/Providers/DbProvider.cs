@@ -1,4 +1,5 @@
-﻿using DreamNekosConnect.Lib.Models;
+﻿using DreamNekos.Core;
+using DreamNekosConnect.Lib.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace DreamNekosConnect.Lib.Providers

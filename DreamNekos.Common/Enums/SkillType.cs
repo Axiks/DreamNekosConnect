@@ -6,11 +6,8 @@ using System.Threading.Tasks;
 
 namespace DreamNekos.Common.Enums
 {
-    public enum FamiliarizationLevel
+    public enum SkillType
     {
-        Interest,
-        Beginner,
-        Medium,
-        Advance
+        Soft, Hard
     }
 }

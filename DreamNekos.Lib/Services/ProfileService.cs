@@ -1,5 +1,7 @@
 ﻿using DreamNekos.API.Helpers;
 using DreamNekos.Common.Enums;
+using DreamNekos.Core;
+using DreamNekos.Core.Entities;
 using DreamNekosConnect.Lib.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -49,18 +51,18 @@ namespace DreamNekosConnect.Lib.Services
             _dbContext.SaveChanges();
             return user;
         }
-        public UserInterestEntity AddInterest(Guid userId, Guid interestId, FamiliarizationLevel? familiarizationLevel) {
-            InterestEntity interest = _dbContext.Interests.FirstOrDefault(x => x.Id == interestId);
+        public UserActivityEntity AddInterest(Guid userId, Guid interestId, FamiliarizationLevel? familiarizationLevel) {
+            ActivityEntity interest = _dbContext.Activities.FirstOrDefault(x => x.Id == interestId);
             if (interest == null) throw new ElementNotFoundException("A interest with such an ID does not exist.");
             UserEntity user = _dbContext.Users
                 .First(x => x.Id == userId);
             if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
-            var newUserInterest = new UserInterestEntity { User = user, Interest = interest, FamiliarizationLevel = familiarizationLevel };
+            var newUserInterest = new UserActivityEntity { User = user, Actvity = interest, FamiliarizationLevel = familiarizationLevel };
             _dbContext.UserInterest.Add(newUserInterest);
             _dbContext.SaveChanges();
             return newUserInterest;
         }
-        public List<UserInterestEntity> GetAllInterest(Guid userId)
+        public List<UserActivityEntity> GetAllInterest(Guid userId)
         {
             UserEntity user = _dbContext.Users
                 .Include(x => x.UserInterest)

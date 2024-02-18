@@ -1,5 +1,4 @@
 ﻿using DreamNekos.Core.Models.Parser;
-using DreamNekosConnect.Lib;
 using DreamNekosConnect.Lib.Services;
 using Newtonsoft.Json;
 using System.Reflection;

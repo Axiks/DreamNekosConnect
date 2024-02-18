@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Text.Json.Serialization;
 using DreamNekosConnect.Lib.Services;
-using DreamNekosConnect.Lib;
+using DreamNekos.Core;
 
 
 var builder = WebApplication.CreateBuilder(args);

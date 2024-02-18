@@ -4,6 +4,7 @@ using DreamNekos.API.Response.InterestType;
 using DreamNekos.API.Response.Link;
 using DreamNekos.API.Response.Profile;
 using DreamNekos.API.Response.Profile.Interest;
+using DreamNekos.Core.Entities;
 using DreamNekosConnect.Lib.Entities;
 
 namespace DreamNekos.API.Mapper.Profiles
@@ -12,19 +13,19 @@ namespace DreamNekos.API.Mapper.Profiles
     {
         public ProfileMapProfile() {
             CreateMap<UserEntity, GetProfileResponse>();
-            CreateMap<UserInterestEntity, InterestResponse>()
-                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Interest.Name))
-                .ForMember(dest => dest.InterestType, opt => opt.MapFrom(src => src.Interest.InterestType));
-            CreateMap<InterestTypeEntity, InterestTypeResponse>()
+            CreateMap<UserActivityEntity, InterestResponse>()
+                .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Actvity.Name))
+                .ForMember(dest => dest.InterestType, opt => opt.MapFrom(src => src.Actvity.InterestType));
+            CreateMap<ActivityTypeEntity, InterestTypeResponse>()
                 .ForMember(dest => dest.Name, opt => opt.MapFrom(src => src.Name))
                 .ForMember(dest => dest.InterestTypeId, opt => opt.MapFrom(src => src.Id));
             CreateMap<LinkEntity, LinkResponse>()
                 .ForMember(dest => dest.LinkId, opt  => opt.MapFrom(src => src.Id));
             CreateMap<UserEntity, GetProfileResponse>()
                 .ForMember(dest => dest.Interest, opt => opt.MapFrom(src => src.UserInterest));
-            CreateMap<InterestEntity, InterestResponse>()
+            CreateMap<ActivityEntity, InterestResponse>()
                 .ForMember(dest => dest.InterestId, opt => opt.MapFrom(src => src.Id));
-            CreateMap<UserInterestEntity, UserInterestLinkResponse>();
+            CreateMap<UserActivityEntity, UserInterestLinkResponse>();
         }
     }
 }
