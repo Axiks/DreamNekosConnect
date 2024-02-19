@@ -13,10 +13,10 @@ namespace DreamNekos.Core.Entities
 
         //public List<ActivityEntity> Interest { get; set; } = new List<ActivityEntity>();
 
-        /*public List<UserActivityEntity> Activities { get; set; } = new List<UserActivityEntity> { };
-        public List<UserSkillEntity> Skills { get; set; } = new List<UserSkillEntity> { };*/
+        public List<UserActivityEntity> ActivitiesPrefix { get; set; } = new List<UserActivityEntity> { };
+        public List<UserSkillEntity> SkillsPrefix { get; set; } = new List<UserSkillEntity> { };
 
-        public List<ActivityEntity> Activities { get; set; } = new List<ActivityEntity> { };
-        public List<SkillEntity> Skills { get; set; } = new List<SkillEntity> { };
+        //public List<ActivityEntity> Activities { get; set; } = new List<ActivityEntity> { };
+        //public List<SkillEntity> Skills { get; set; } = new List<SkillEntity> { };
     }
 }

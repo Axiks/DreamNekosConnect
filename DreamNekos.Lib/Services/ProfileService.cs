@@ -2,7 +2,6 @@
 using DreamNekos.Common.Enums;
 using DreamNekos.Core;
 using DreamNekos.Core.Entities;
-using DreamNekos.Core.Entities.Activity;
 using DreamNekosConnect.Lib.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,6 +14,7 @@ namespace DreamNekosConnect.Lib.Services
         {
             _dbContext = applicationDbContext;
         }
+
         public UserEntity CreateProfile(long tgId, string name, string? about)
         {
             var newUser = new UserEntity{ TgId = tgId, Name = name, About = about };
@@ -22,89 +22,192 @@ namespace DreamNekosConnect.Lib.Services
             _dbContext.SaveChanges();
             return newUser;
         }
-        public List<UserEntity> GetProfiles()
+
+        public async Task<List<UserEntity>> GetProfiles()
         {
-            var users = _dbContext.Users
+            var users = await _dbContext.Users
                 .Include(x => x.Links)
-                .Include(x => x.UserInterest).ThenInclude(x => x.Interest).ThenInclude(x => x.InterestType).ToList();
+                .Include(x => x.ActivitiesPrefix).ThenInclude(x => x.Actvity)
+                .Include(x => x.SkillsPrefix).ThenInclude(x => x.Skill)
+                //.Include(x => x.Activities)
+                //.Include(x => x.Skills)
+                .ToListAsync();
             return users;
         }
-        public UserEntity GetProfileById(Guid id) {
-            var user = _dbContext.Users
+
+        public async Task<UserEntity> GetProfileById(Guid id) {
+            var user = await _dbContext.Users
                 .Include(x => x.Links)
-                .Include(x => x.UserInterest).ThenInclude(x => x.Interest).ThenInclude(x => x.InterestType)
-                .FirstOrDefault(u => u.Id == id);
+                .Include(x => x.ActivitiesPrefix).ThenInclude(x => x.Actvity)
+                .Include(x => x.SkillsPrefix).ThenInclude(x => x.Skill)
+                //.Include(x => x.Activities)
+                //.Include(x => x.Skills)
+                .FirstOrDefaultAsync(u => u.Id == id);
             if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
             return user;
         }
-        public UserEntity GetProfileByTgId(long tgId) {
-            var user = _dbContext.Users.FirstOrDefault(u => u.TgId == tgId);
+
+        public async Task<UserEntity> GetProfileByTgId(long tgId) {
+            var user = await _dbContext.Users
+                .Include(x => x.Links)
+                .Include(x => x.ActivitiesPrefix).ThenInclude(x => x.Actvity)
+                .Include(x => x.SkillsPrefix).ThenInclude(x => x.Skill)
+                //.Include(x => x.Activities)
+                //.Include (x => x.Skills)
+                .FirstOrDefaultAsync(u => u.TgId == tgId);
             if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
             return user;
         }
-        public UserEntity UpdateProfile(Guid userId, string? name, string? about)
+
+        public async Task<UserEntity> UpdateProfile(Guid userId, string? name, string? about)
         {
-            var user = _dbContext.Users
-                .FirstOrDefault(x => x.Id ==  userId);
+            var user = await _dbContext.Users
+                .FirstOrDefaultAsync(x => x.Id ==  userId);
             if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
             if (name != null) user.Name = name;
-            if(about != null) user.About = about;
-            _dbContext.SaveChanges();
+            if (about != null) user.About = about;
+            await _dbContext.SaveChangesAsync();
             return user;
         }
-        public UserActivityEntity AddInterest(Guid userId, Guid interestId, FamiliarizationLevel? familiarizationLevel) {
-            ActivityEntity interest = _dbContext.Activities.FirstOrDefault(x => x.Id == interestId);
-            if (interest == null) throw new ElementNotFoundException("A interest with such an ID does not exist.");
-            UserEntity user = _dbContext.Users
-                .First(x => x.Id == userId);
-            if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
-            var newUserInterest = new UserActivityEntity { User = user, Actvity = interest, FamiliarizationLevel = familiarizationLevel };
-            _dbContext.UserInterest.Add(newUserInterest);
-            _dbContext.SaveChanges();
-            return newUserInterest;
-        }
-        public List<UserActivityEntity> GetAllInterest(Guid userId)
+
+        public async Task<LinkEntity> CreateLink(Guid userId, string name, string url)
         {
-            UserEntity user = _dbContext.Users
-                .Include(x => x.UserInterest)
-                .ThenInclude(x => x.Interest)
-                .ThenInclude(x => x.InterestType)
-                .First(x => x.Id == userId);
-            var response = user.UserInterest.ToList();
-            return response;
-        }
-        public void RemoveInterest(Guid userId, Guid userInterestId)
-        {
-            UserEntity user = _dbContext.Users
-                .Include(x => x.UserInterest)
-                .First(x => x.Id == userId);
-            if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
-            var interestUserItem = user.UserInterest.FirstOrDefault(x => x.Id == userInterestId);
-            if (interestUserItem == null) throw new ElementNotFoundException("A interest with such an ID does not exist.");
-            user.UserInterest.Remove(interestUserItem);
-            _dbContext.SaveChanges();
-        }
-        public LinkEntity CreateLink(Guid userId, string name, string url)
-        {
-            UserEntity user = _dbContext.Users
+            var user = await _dbContext.Users
                 .Include(x => x.Links)
-                .First(x => x.Id == userId);
+                .FirstOrDefaultAsync(x => x.Id == userId);
             if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
             LinkEntity link = new LinkEntity { Name = name, Url = url };
             user.Links.Add(link);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
             return link;
         }
-        public void DeleteLink(Guid userId, Guid linkId)
+
+        public async Task DeleteLink(Guid userId, Guid linkId)
         {
-            UserEntity user = _dbContext.Users
+            var user = await _dbContext.Users
                 .Include(x => x.Links)
-                .First(x => x.Id == userId);
+                .FirstOrDefaultAsync(x => x.Id == userId);
             if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
             var link = user.Links.FirstOrDefault(x => x.Id == linkId);
             if (link == null) throw new ElementNotFoundException("A link with such an ID does not exist.");
             user.Links.Remove(link);
-            _dbContext.SaveChanges();
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<UserActivityEntity> AddActivity(Guid userId, Guid activityId, EngagmentLevel engagmentLevel = EngagmentLevel.Hobby)
+        {
+            var user = await _dbContext.Users
+                .FirstOrDefaultAsync(x => x.Id == userId);
+            if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
+
+            var activity = await _dbContext.Activity
+                .FirstOrDefaultAsync(x => x.Id == activityId);
+            if (activity == null) throw new ElementNotFoundException("A activity with such an ID does not exist.");
+
+            var newActivityConnection = new UserActivityEntity() {
+                Actvity = activity,
+                User = user,
+                EngagmentLevel = engagmentLevel
+            };
+
+            await _dbContext.AddAsync(newActivityConnection);
+            return newActivityConnection;
+        }
+
+        public async Task<UserActivityEntity> UpdateActivity(Guid userId, Guid activityId, EngagmentLevel? engagmentLevel)
+        {
+            var user = await _dbContext.Users
+                .FirstOrDefaultAsync(x => x.Id == userId);
+            if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
+
+            var activity = await _dbContext.Activity
+                .FirstOrDefaultAsync(x => x.Id == activityId);
+            if (activity == null) throw new ElementNotFoundException("A activity with such an ID does not exist.");
+
+            var entity = await _dbContext.UserActivity.FirstOrDefaultAsync(x => x.User.Id == userId && x.Actvity.Id == activityId);
+            if (entity == null) throw new ElementNotFoundException("The activity and the user with such an ID does not exist.");//
+
+            if (engagmentLevel != null) entity.EngagmentLevel = (EngagmentLevel)engagmentLevel;
+
+            await _dbContext.SaveChangesAsync();
+            return entity;
+        }
+
+        public async Task RemoveActivity(Guid userId, Guid activityId)
+        {
+            var user = await _dbContext.Users
+                .FirstOrDefaultAsync(x => x.Id == userId);
+            if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
+
+            var activity = await _dbContext.Activity
+                .FirstOrDefaultAsync(x => x.Id == activityId);
+            if (activity == null) throw new ElementNotFoundException("A activity with such an ID does not exist.");
+
+            var result = await _dbContext.UserActivity.FirstOrDefaultAsync(x => x.User.Id == userId && x.Actvity.Id == activityId);
+            if(result == null) throw new ElementNotFoundException("The activity and the user with such an ID does not exist.");//
+
+            _dbContext.Remove(result);
+            await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<UserSkillEntity> AddSkill(Guid userId, Guid skillId, FamiliarizationLevel familiarizationLevel = FamiliarizationLevel.Interest)
+        {
+            var user = await _dbContext.Users
+                .FirstOrDefaultAsync(x => x.Id == userId);
+            if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
+
+            var skill = await _dbContext.Skill
+                .FirstOrDefaultAsync(x => x.Id == skillId);
+            if (skill == null) throw new ElementNotFoundException("A skill with such an ID does not exist.");
+
+            var newSkillConnection = new UserSkillEntity()
+            {
+                Skill = skill,
+                User = user,
+                FamiliarizationLevel = familiarizationLevel
+            };
+
+            await _dbContext.AddAsync(newSkillConnection);
+            await _dbContext.SaveChangesAsync();
+
+            return newSkillConnection;
+        }
+
+        public async Task<UserSkillEntity> UpdateSkill(Guid userId, Guid skillId, FamiliarizationLevel? familiarizationLevel)
+        {
+            var user = await _dbContext.Users
+                .FirstOrDefaultAsync(x => x.Id == userId);
+            if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
+
+            var skill = await _dbContext.Skill
+                .FirstOrDefaultAsync(x => x.Id == skillId);
+            if (skill == null) throw new ElementNotFoundException("A skill with such an ID does not exist.");
+
+            var entity = await _dbContext.UserSkill.FirstOrDefaultAsync(x => x.User.Id == userId && x.Skill.Id == skillId);
+            if (entity == null) throw new ElementNotFoundException("The skill and the user with such an ID does not exist.");//
+
+            if (familiarizationLevel != null) entity.FamiliarizationLevel = (FamiliarizationLevel)familiarizationLevel;
+
+            await _dbContext.SaveChangesAsync();
+            return entity;
+        }
+
+
+        public async Task RemoveSkill(Guid userId, Guid skillId)
+        {
+            var user = await _dbContext.Users
+                .FirstOrDefaultAsync(x => x.Id == userId);
+            if (user == null) throw new ElementNotFoundException("A user with such an ID does not exist.");
+
+            var skill = await _dbContext.Skill
+                .FirstOrDefaultAsync(x => x.Id == skillId);
+            if (skill == null) throw new ElementNotFoundException("A skill with such an ID does not exist.");
+
+            var result = await _dbContext.UserSkill.FirstOrDefaultAsync(x => x.User.Id == userId && x.Skill.Id == skillId);
+            if (result == null) throw new ElementNotFoundException("The skill and the user with such an ID does not exist.");//
+
+            _dbContext.Remove(result);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }
