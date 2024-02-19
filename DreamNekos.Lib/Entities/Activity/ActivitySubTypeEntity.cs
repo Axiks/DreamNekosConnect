@@ -1,9 +1,9 @@
-﻿namespace DreamNekos.Core.Entities
+﻿namespace DreamNekos.Core.Entities.Activity
 {
     public class ActivitySubTypeEntity : BasicEntity
     {
         public required string Name { get; set; }
-        public required ActivityTypeEntity TypeEntity { get; set; }
+        public required ActivityTypeEntity? TypeEntity { get; set; }
 
         public List<ActivityEntity> Activities { get; set; } = new List<ActivityEntity> { };
     }

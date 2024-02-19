@@ -2,6 +2,7 @@
 using DreamNekos.Common.Enums;
 using DreamNekos.Core;
 using DreamNekos.Core.Entities;
+using DreamNekos.Core.Entities.Activity;
 using DreamNekosConnect.Lib.Entities;
 using Microsoft.EntityFrameworkCore;
 

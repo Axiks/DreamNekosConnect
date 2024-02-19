@@ -5,6 +5,7 @@ using DreamNekos.API.Response.Link;
 using DreamNekos.API.Response.Profile;
 using DreamNekos.API.Response.Profile.Interest;
 using DreamNekos.Core.Entities;
+using DreamNekos.Core.Entities.Activity;
 using DreamNekosConnect.Lib.Entities;
 
 namespace DreamNekos.API.Mapper.Profiles

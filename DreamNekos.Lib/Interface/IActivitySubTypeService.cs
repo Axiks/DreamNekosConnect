@@ -1,14 +1,14 @@
-﻿using DreamNekos.Core.Entities;
-using DreamNekos.Core.Models.DTO;
+﻿using DreamNekos.Core.Entities.Activity;
+using DreamNekos.Core.Models.DTO.ActivitySubType;
 
 namespace DreamNekos.Core.Interface
 {
     public interface IActivitySubTypeService
     {
-        public ActivitySubTypeEntity GetActivitySubTypeById(Guid ActivitySubTypeId);
-        public List<ActivitySubTypeEntity> GetAllActivitySubType();
-        public ActivitySubTypeEntity CreateActivitySubType(ActivitySubTypeDTO activitySubTypeDTO);
-        public ActivitySubTypeEntity UpdateActivitySubType(Guid ActivitySubTypeId, ActivitySubTypeDTO activitySubTypeDTO);
-        public void DeleteActivitySubType(Guid ActivitySubTypeId);
+        public Task<ActivitySubTypeEntity> GetActivitySubTypeById(Guid ActivitySubTypeId);
+        public Task<List<ActivitySubTypeEntity>> GetAllActivitySubType();
+        public Task<ActivitySubTypeEntity> CreateActivitySubType(CreateActivitySubTypeDTO create);
+        public Task<ActivitySubTypeEntity> UpdateActivitySubType(Guid ActivitySubTypeId, UpdateActivitySubTypeDTO update);
+        public Task DeleteActivitySubType(Guid ActivitySubTypeId);
     }
 }

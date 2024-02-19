@@ -1,5 +1,6 @@
 ﻿using DreamNekos.Common.Enums;
 using DreamNekos.Core.Entities;
+using DreamNekos.Core.Entities.Activity;
 
 namespace DreamNekosConnect.Lib.Entities
 {

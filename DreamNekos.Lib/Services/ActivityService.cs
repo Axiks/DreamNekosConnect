@@ -1,62 +1,76 @@
 ﻿using DreamNekos.API.Helpers;
 using DreamNekos.Core;
-using DreamNekos.Core.Entities;
+using DreamNekos.Core.Entities.Activity;
+using DreamNekos.Core.Interface;
+using DreamNekos.Core.Models.DTO.Activity;
 using Microsoft.EntityFrameworkCore;
 
 namespace DreamNekosConnect.Lib.Services
 {
-    public class ActivityService
+    public class ActivityService : IActivityService
     {
+        private readonly string _notFoundMessage = "A activity with such an ID does not exist.";
+        private readonly string _notFoundSubtypeMessage = "A subtype with such an ID does not exist.";
+
         private ApplicationDbContext _dbContext { get; set; }
         public ActivityService(ApplicationDbContext applicationDbContext)
         {
             _dbContext = applicationDbContext;
         }
 
-        public ActivityEntity CreateInterest(string name, Guid? interestTypeId)
+        public async Task<List<ActivityEntity>> ActivityGetAll()
         {
-            var interestType = _dbContext.InterestType.FirstOrDefault(x => x.Id == interestTypeId);
-            if (interestType == null) throw new ElementNotFoundException("A interest type with such an ID does not exist.");
-            ActivityEntity newInterest = new ActivityEntity{ Name = name, InterestType = interestType }; 
-            _dbContext.Add(newInterest);
-            _dbContext.SaveChanges();
-            return newInterest;
+            return await _dbContext.Activity.ToListAsync();
         }
-        public List<ActivityEntity> GetAllInterest()
-        {
-            return _dbContext.Activities
-                .Include(x => x.InterestType)
-                .ToList();
-        }
-        public ActivityEntity UpdateInterest(Guid id, string? name, Guid? interestTypeId) {
-            var interest = _dbContext.Activities
-                .Include(x => x.InterestType)
-                .First(x => x.Id == id);
-            if (interest == null) throw new ElementNotFoundException("A interest with such an ID does not exist.");
-            interest.Name = name ?? interest.Name;
 
-            if(interestTypeId != null)
+        public async Task<ActivityEntity> ActivityGetById(Guid ActvityId)
+        {
+            var result = await _dbContext.Activity.FirstOrDefaultAsync(x => x.Id == ActvityId);
+            if (result == null) throw new ElementNotFoundException(_notFoundMessage);
+            return result;
+        }
+
+        public async Task<ActivityEntity> ActivityCreate(CreateActivityDTO create)
+        {
+            var subtype = await _dbContext.ActivitySubType.FirstOrDefaultAsync(x => x.Id == create.SubTypeId);
+            if (subtype == null) throw new ElementNotFoundException(_notFoundSubtypeMessage);
+
+            var newEntity = new ActivityEntity()
             {
-                var interestType = _dbContext.InterestType.FirstOrDefault(x => x.Id == interestTypeId);
-                if (interestType == null) throw new ElementNotFoundException("A interest type with such an ID does not exist.");
-                interest.InterestType = interestType;
+                Name = create.Name,
+                ActivitySubType = subtype
+            };
+
+            await _dbContext.Activity.AddAsync(newEntity);
+            await _dbContext.SaveChangesAsync();
+
+            return newEntity;
+        }
+
+        public async Task<ActivityEntity> ActivityUpdate(Guid ActvityId, UpdateActivityDTO update)
+        {
+            var entity = await _dbContext.Activity.FirstOrDefaultAsync(x => x.Id == ActvityId);
+            if (entity == null) throw new ElementNotFoundException(_notFoundMessage);
+
+            if(update.Name != null) entity.Name = update.Name;
+            if(update.SubTypeId != null)
+            {
+                var subtype = await _dbContext.ActivitySubType.FirstOrDefaultAsync(x => x.Id == update.SubTypeId);
+                if (subtype == null) throw new ElementNotFoundException(_notFoundSubtypeMessage);
+
+                entity.ActivitySubType = subtype;
             }
 
-            _dbContext.SaveChanges();
-            return interest;
+            await _dbContext.SaveChangesAsync();
+            return entity;
         }
-        public void DeleteInterest(Guid interestId) {
 
-            var interest = _dbContext.Activities
-               .FirstOrDefault(x => x.Id == interestId);
-            if (interest == null) throw new ElementNotFoundException("A interest with such an ID does not exist.");
-
-            var userCurentInterest = _dbContext.UserInterest.Where(x => x.InterestId == interestId);
-            _dbContext.UserInterest.RemoveRange(userCurentInterest);
-
-            _dbContext.Activities.Remove(interest);
-
-            _dbContext.SaveChanges();
+        public async Task ActivityDelete(Guid ActvityId)
+        {
+            var result = await _dbContext.Activity.FirstOrDefaultAsync(x => x.Id == ActvityId);
+            if (result == null) throw new ElementNotFoundException(_notFoundMessage);
+            _dbContext.Activity.Remove(result);
+            await _dbContext.SaveChangesAsync();
         }
     }
 }

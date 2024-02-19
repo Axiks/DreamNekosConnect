@@ -1,4 +1,5 @@
 ﻿using DreamNekos.Core.Entities;
+using DreamNekos.Core.Entities.Activity;
 using DreamNekosConnect.Lib.Entities;
 using Microsoft.EntityFrameworkCore;
 

@@ -1,16 +1,16 @@
 ﻿using DreamNekos.Core.Entities;
-using DreamNekos.Core.Models.DTO;
+using DreamNekos.Core.Models.DTO.Skill;
 
 namespace DreamNekos.Core.Interface
 {
     public interface ISkillService
     {
-        public SkillEntity GetSkillById(Guid SkillId);
-        public List<SkillEntity> GetAllSkill();
+        public Task<SkillEntity> GetSkillById(Guid SkillId);
+        public Task<List<SkillEntity>> GetAllSkill();
 
-        public SkillEntity CreateSkill(SkillDTO skillDTO);
-        public SkillEntity UpdateSkill(Guid SkillId, SkillDTO skillDTO);
+        public Task<SkillEntity> CreateSkill(CreateSkillDTO create);
+        public Task<SkillEntity> UpdateSkill(Guid SkillId, UpdateSkillDTO update);
 
-        public void DeleteSkill(Guid SkillId);
+        public Task DeleteSkill(Guid SkillId);
     }
 }

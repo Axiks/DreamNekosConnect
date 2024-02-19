@@ -2,7 +2,6 @@
 using DreamNekos.API.Request.Interest;
 using DreamNekos.API.Response.Interest;
 using DreamNekos.API.Response.InterestType;
-using DreamNekos.Core.Services;
 using DreamNekosConnect.Lib.Services;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Annotations;

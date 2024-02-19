@@ -1,4 +1,5 @@
-﻿using DreamNekosConnect.Lib.Entities;
+﻿using DreamNekos.Core.Entities.Activity;
+using DreamNekosConnect.Lib.Entities;
 
 namespace DreamNekos.Core.Entities
 {

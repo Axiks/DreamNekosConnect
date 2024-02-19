@@ -1,4 +1,4 @@
-﻿namespace DreamNekos.Core.Entities
+﻿namespace DreamNekos.Core.Entities.Activity
 {
     public class ActivityTypeEntity : BasicEntity
     {
