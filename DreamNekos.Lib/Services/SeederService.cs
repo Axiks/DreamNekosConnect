@@ -1,4 +1,5 @@
-﻿using DreamNekos.Core.Models.Parser;
+﻿using DreamNekos.Core.Interface;
+using DreamNekos.Core.Models.Parser;
 using Newtonsoft.Json;
 using System.Reflection;
 
@@ -7,16 +8,20 @@ namespace DreamNekos.Core.Services
     public class SeederService
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly SkillService _interestTypeService;
-        private readonly SkillService _interestService;
+        private readonly IActivityTypeService _activityTypeService;
+        private readonly IActivitySubTypeService _activitySubTypeService;
+        private readonly IActivityService _activityService;
+        private readonly ISkillService _skillService;
 
         private SeedData _data;
 
-        public SeederService(ApplicationDbContext dbContext, SkillService interestTypeService, SkillService interestService)
+        public SeederService(ApplicationDbContext dbContext, IActivityTypeService activityTypeService, IActivitySubTypeService activitySubTypeService, IActivityService activityService, ISkillService skillService)
         {
             _dbContext = dbContext;
-            _interestTypeService = interestTypeService;
-            _interestService = interestService;
+            _activityTypeService = activityTypeService;
+            _activitySubTypeService = activitySubTypeService;
+            _activityService = activityService;
+            _skillService = skillService;
             LoadData();
         }
 
@@ -27,10 +32,17 @@ namespace DreamNekos.Core.Services
             _data = JsonConvert.DeserializeObject<SeedData>(json);
         }
 
-        public async void RunSeed()
+        public async Task RunSeed()
         {
-            SeedInetestTypes();
-            SeedInterests();
+            await SeedActivityTypes();
+            await SeedActivitySubTypes();
+            await SeedActivities();
+            await SeedSkills();
+        }
+
+        private async Task SeedActivityTypes()
+        {
+
         }
 
         private void SeedInetestTypes()

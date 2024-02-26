@@ -1,4 +1,682 @@
 ﻿{
+  "ActivityCategory": [
+    {
+      "id": 0,
+      "name": "Collecting"
+    },
+    {
+      "id": 1,
+      "name": "Making"
+    },
+    {
+      "id": 2,
+      "name": "Activity"
+    },
+    {
+      "id": 3,
+      "name": "Play"
+    },
+    {
+      "id": 4,
+      "name": "Arts"
+    }
+  ],
+
+  "ActivitySubCategory": [
+    {
+      "id": 0,
+      "activityCategoryId": 0,
+      "name": "Physical"
+    },
+    {
+      "id": 1,
+      "activityCategoryId": 0,
+      "name": "Record"
+    },
+    {
+      "id": 2,
+      "activityCategoryId": 0,
+      "name": "Spotting"
+    },
+    {
+      "id": 3,
+      "activityCategoryId": 1,
+      "name": "Clothing"
+    },
+    {
+      "id": 4,
+      "activityCategoryId": 1,
+      "name": "Cooking"
+    },
+    {
+      "id": 5,
+      "activityCategoryId": 1,
+      "name": "Garden"
+    },
+    {
+      "id": 6,
+      "activityCategoryId": 1,
+      "name": "Model"
+    },
+    {
+      "id": 7,
+      "activityCategoryId": 1,
+      "name": "Utility"
+    },
+    {
+      "id": 8,
+      "activityCategoryId": 2,
+      "name": "Animal"
+    },
+    {
+      "id": 9,
+      "activityCategoryId": 2,
+      "name": "Outdoors"
+    },
+    {
+      "id": 10,
+      "activityCategoryId": 2,
+      "name": "Travel"
+    },
+    {
+      "id": 11,
+      "activityCategoryId": 3,
+      "name": "Fitness"
+    },
+    {
+      "id": 12,
+      "activityCategoryId": 3,
+      "name": "Games"
+    },
+    {
+      "id": 13,
+      "activityCategoryId": 3,
+      "name": "Sports"
+    },
+    {
+      "id": 14,
+      "activityCategoryId": 4,
+      "name": "Dance"
+    },
+    {
+      "id": 15,
+      "activityCategoryId": 4,
+      "name": "Music"
+    },
+    {
+      "id": 16,
+      "activityCategoryId": 4,
+      "name": "Theatre"
+    },
+    {
+      "id": 17,
+      "activityCategoryId": 4,
+      "name": "Visual"
+    },
+    {
+      "id": 18,
+      "activityCategoryId": 4,
+      "name": "Literary"
+    }
+  ],
+  "Activities": [
+    {
+      "categoryId": 0,
+      "name": "Art"
+    },
+    {
+      "categoryId": 0,
+      "name": "Books"
+    },
+    {
+      "categoryId": 0,
+      "name": "Comic books"
+    },
+    {
+      "categoryId": 0,
+      "name": "Movie and movie memorabilia"
+    },
+    {
+      "categoryId": 0,
+      "name": "Cards"
+    },
+    {
+      "categoryId": 0,
+      "name": "Video games"
+    },
+    {
+      "categoryId": 1,
+      "name": "Music/Audio Records"
+    },
+    {
+      "categoryId": 1,
+      "name": "Video Records"
+    },
+    {
+      "categoryId": 2,
+      "name": "Geocaching (GPS)"
+    },
+    {
+      "categoryId": 2,
+      "name": "Satellite watching"
+    },
+    {
+      "categoryId": 2,
+      "name": "Amateur astronomy"
+    },
+    {
+      "categoryId": 2,
+      "name": "Dowsing (ground water)"
+    },
+    {
+      "categoryId": 2,
+      "name": "Metal detecting"
+    },
+    {
+      "categoryId": 2,
+      "name": "Microscopy"
+    },
+    {
+      "categoryId": 2,
+      "name": "Shortwave listening"
+    },
+    {
+      "categoryId": 3,
+      "name": "Crocheting"
+    },
+    {
+      "categoryId": 3,
+      "name": "Cross-stitch"
+    },
+    {
+      "categoryId": 3,
+      "name": "Fashion"
+    },
+    {
+      "categoryId": 4,
+      "name": "Baking"
+    },
+    {
+      "categoryId": 4,
+      "name": "Cooking"
+    },
+    {
+      "categoryId": 4,
+      "name": "Coffee roasting"
+    },
+    {
+      "categoryId": 4,
+      "name": "Home brewing"
+    },
+    {
+      "categoryId": 4,
+      "name": "Kombucha brewing"
+    },
+    {
+      "categoryId": 5,
+      "name": "Gardening"
+    },
+    {
+      "categoryId": 5,
+      "name": "Hydroponics"
+    },
+    {
+      "categoryId": 6,
+      "name": "3D printing"
+    },
+    {
+      "categoryId": 6,
+      "name": "Blacksmithing"
+    },
+    {
+      "categoryId": 6,
+      "name": "Candle making"
+    },
+    {
+      "categoryId": 6,
+      "name": "Carving"
+    },
+    {
+      "categoryId": 6,
+      "name": "Do It Yourself"
+    },
+    {
+      "categoryId": 6,
+      "name": "Glassblowing"
+    },
+    {
+      "categoryId": 6,
+      "name": "Lapidary (stones and gems)"
+    },
+    {
+      "categoryId": 6,
+      "name": "Lego buildin"
+    },
+    {
+      "categoryId": 6,
+      "name": "Machining"
+    },
+    {
+      "categoryId": 6,
+      "name": "Metalworking"
+    },
+    {
+      "categoryId": 6,
+      "name": "Model building"
+    },
+    {
+      "categoryId": 6,
+      "name": "Origami"
+    },
+    {
+      "categoryId": 6,
+      "name": "Pottery"
+    },
+    {
+      "categoryId": 6,
+      "name": "Rock balancing"
+    },
+    {
+      "categoryId": 6,
+      "name": "Taxidermy"
+    },
+    {
+      "categoryId": 6,
+      "name": "Whittling"
+    },
+    {
+      "categoryId": 6,
+      "name": "Woodworking"
+    },
+    {
+      "categoryId": 7,
+      "name": "Amateur radio"
+    },
+    {
+      "categoryId": 7,
+      "name": "Auto audiophilia"
+    },
+    {
+      "categoryId": 7,
+      "name": "Book restoration"
+    },
+    {
+      "categoryId": 7,
+      "name": "Computer programming"
+    },
+    {
+      "categoryId": 7,
+      "name": "Electronics"
+    },
+    {
+      "categoryId": 7,
+      "name": "Gunsmithing"
+    },
+    {
+      "categoryId": 7,
+      "name": "High-power rocketry"
+    },
+    {
+      "categoryId": 7,
+      "name": "Home building"
+    },
+    {
+      "categoryId": 7,
+      "name": "Knife making"
+    },
+    {
+      "categoryId": 7,
+      "name": "Soapmaking"
+    },
+    {
+      "categoryId": 7,
+      "name": "Vehicle restoration"
+    },
+    {
+      "categoryId": 8,
+      "name": "Animal fancy"
+    },
+    {
+      "categoryId": 8,
+      "name": "Pet"
+    },
+    {
+      "categoryId": 8,
+      "name": "Horseback riding"
+    },
+    {
+      "categoryId": 9,
+      "name": "Backpacking"
+    },
+    {
+      "categoryId": 9,
+      "name": "Driving"
+    },
+    {
+      "categoryId": 9,
+      "name": "Flying"
+    },
+    {
+      "categoryId": 9,
+      "name": "Hiking"
+    },
+    {
+      "categoryId": 9,
+      "name": "Rafting"
+    },
+    {
+      "categoryId": 9,
+      "name": "Skydiving"
+    },
+    {
+      "categoryId": 10,
+      "name": "Excursion"
+    },
+    {
+      "categoryId": 10,
+      "name": "Exploration"
+    },
+    {
+      "categoryId": 10,
+      "name": "Traveling"
+    },
+    {
+      "categoryId": 10,
+      "name": "Touring"
+    },
+    {
+      "categoryId": 10,
+      "name": "Sightseeing"
+    },
+    {
+      "categoryId": 10,
+      "name": "Vacation"
+    },
+    {
+      "categoryId": 10,
+      "name": "Holidaying"
+    },
+    {
+      "categoryId": 10,
+      "name": "Pilgrimage"
+    },
+    {
+      "categoryId": 10,
+      "name": "Road Trip"
+    },
+    {
+      "categoryId": 11,
+      "name": "Aerobics"
+    },
+    {
+      "categoryId": 11,
+      "name": "Bodybuilding"
+    },
+    {
+      "categoryId": 11,
+      "name": "Gymnastics"
+    },
+    {
+      "categoryId": 11,
+      "name": "Judo"
+    },
+    {
+      "categoryId": 12,
+      "name": "Board/tabletop games"
+    },
+    {
+      "categoryId": 12,
+      "name": "Bridge"
+    },
+    {
+      "categoryId": 12,
+      "name": "Card games"
+    },
+    {
+      "categoryId": 12,
+      "name": "Cosplaying"
+    },
+    {
+      "categoryId": 12,
+      "name": "Cryptography"
+    },
+    {
+      "categoryId": 12,
+      "name": "Debate"
+    },
+    {
+      "categoryId": 12,
+      "name": "Go"
+    },
+    {
+      "categoryId": 12,
+      "name": "Poker"
+    },
+    {
+      "categoryId": 12,
+      "name": "Puzzles"
+    },
+    {
+      "categoryId": 12,
+      "name": "Video gaming"
+    },
+    {
+      "categoryId": 12,
+      "name": "Chess"
+    },
+    {
+      "categoryId": 13,
+      "name": "Badminton"
+    },
+    {
+      "categoryId": 13,
+      "name": "Baseball"
+    },
+    {
+      "categoryId": 13,
+      "name": "Basketball"
+    },
+    {
+      "categoryId": 13,
+      "name": "Billiards"
+    },
+    {
+      "categoryId": 13,
+      "name": "Boxing"
+    },
+    {
+      "categoryId": 13,
+      "name": "Cycling"
+    },
+    {
+      "categoryId": 13,
+      "name": "Football"
+    },
+    {
+      "categoryId": 14,
+      "name": "Ballet"
+    },
+    {
+      "categoryId": 14,
+      "name": "Break dancing"
+    },
+    {
+      "categoryId": 14,
+      "name": "Cha cha"
+    },
+    {
+      "categoryId": 14,
+      "name": "Folk"
+    },
+    {
+      "categoryId": 14,
+      "name": "Free style"
+    },
+    {
+      "categoryId": 14,
+      "name": "Salsa"
+    },
+    {
+      "categoryId": 14,
+      "name": "Rock n Roll"
+    },
+    {
+      "categoryId": 15,
+      "name": "Alternative"
+    },
+    {
+      "categoryId": 15,
+      "name": "Bass"
+    },
+    {
+      "categoryId": 15,
+      "name": "Country"
+    },
+    {
+      "categoryId": 15,
+      "name": "Electro"
+    },
+    {
+      "categoryId": 15,
+      "name": "Guitar"
+    },
+    {
+      "categoryId": 15,
+      "name": "Metal"
+    },
+    {
+      "categoryId": 15,
+      "name": "Pop"
+    },
+    {
+      "categoryId": 15,
+      "name": "Rock"
+    },
+    {
+      "categoryId": 15,
+      "name": "Singing"
+    },
+    {
+      "categoryId": 15,
+      "name": "Saxophone"
+    },
+    {
+      "categoryId": 16,
+      "name": "Acting"
+    },
+    {
+      "categoryId": 16,
+      "name": "Drama"
+    },
+    {
+      "categoryId": 16,
+      "name": "Magic"
+    },
+    {
+      "categoryId": 16,
+      "name": "Puppetry"
+    },
+    {
+      "categoryId": 16,
+      "name": "Stage shows"
+    },
+    {
+      "categoryId": 16,
+      "name": "Stand-up comedy"
+    },
+    {
+      "categoryId": 16,
+      "name": "Calligraphy"
+    },
+    {
+      "categoryId": 17,
+      "name": "Colouring"
+    },
+    {
+      "categoryId": 17,
+      "name": " Digital arts"
+    },
+    {
+      "categoryId": 17,
+      "name": "Drawing"
+    },
+    {
+      "categoryId": 17,
+      "name": "Flower arranging"
+    },
+    {
+      "categoryId": 17,
+      "name": "Graffiti"
+    },
+    {
+      "categoryId": 17,
+      "name": "Painting"
+    },
+    {
+      "categoryId": 17,
+      "name": "Movie making"
+    },
+    {
+      "categoryId": 17,
+      "name": "Photography"
+    },
+    {
+      "categoryId": 17,
+      "name": "Sand art"
+    },
+    {
+      "categoryId": 17,
+      "name": "Sculpting"
+    },
+    {
+      "categoryId": 17,
+      "name": "Sketching"
+    },
+    {
+      "categoryId": 18,
+      "name": "Astrology"
+    },
+    {
+      "categoryId": 18,
+      "name": "Creative writing"
+    },
+    {
+      "categoryId": 18,
+      "name": "Language learning"
+    },
+    {
+      "categoryId": 18,
+      "name": "Meteorology"
+    },
+    {
+      "categoryId": 18,
+      "name": "Reading"
+    },
+    {
+      "categoryId": 18,
+      "name": "Videophilia"
+    },
+    {
+      "categoryId": 18,
+      "name": "Watching television"
+    },
+    {
+      "categoryId": 18,
+      "name": "Web surfing"
+    },
+    {
+      "categoryId": 18,
+      "name": "Worldbuilding"
+    },
+    {
+      "categoryId": 18,
+      "name": "Writing"
+    }
+  ],
+
+
+
+
   "Interests": [
     [
       "c",
@@ -379,6 +1057,6 @@
     [
       "pet fostering",
       "hobby"
-    ],
+    ]
   ]
 }
